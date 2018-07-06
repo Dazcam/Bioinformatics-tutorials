@@ -16,7 +16,7 @@ In order to follow this tutorial you will need to have basic knowledge of the fo
 Links other pages.
 
 - [Overview](pages/overview.html)
-- [Making an independent website](pages/independent_site.html)
+- [Get SRA files](pages/get.sra.html)
 - [Making a personal site](pages/user_site.html)
 - [Making a site for a project](pages/project_site.html)
 - [Making a jekyll-free site](pages/nojekyll.html)
