@@ -43,7 +43,7 @@ in the repository associated with the study.
 
 In main repo page (given in paper) go to Query DataSets for GSEXXXXX under GEO accession number near top of the page.
 
-![useful image](https://github.com/Dazcam/SRA-to-Peak/blob/gh-pages/assets/geo_screenshot1.png)
+![useful image]({{ site.baseurl }}/assets/geo_screenshot1.png)
 
 This takes you to a list of all the replicates in the repo - choose SRA Run Selector to get to page containing SRA number for each replicate
 SRA number is in row titled run:SRRXXXXXXX
