@@ -25,7 +25,7 @@ Links other pages.
 - [Overview](pages/overview.html)
 - [Required packages](pages/required_packages.html)
 - [Get SRA files](pages/get_sra_info.html)
-- [Download SRA files](download_SRA_files.html)
+- [Download SRA files](pages/download_SRA_files.html)
 - [SRA to fastq](pages/SRA_2_fastq.html)
 - [Quality control - FastQC/MultiQC](pages/fastqc.html)
 - [Alignment](pages/alignment.html)
