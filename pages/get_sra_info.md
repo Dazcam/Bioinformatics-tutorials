@@ -1,15 +1,8 @@
 ---
 layout: page
-title: SRA to Bed file walkthough
-description: Basic high thoughput sequencing walkthrough
+title: Collecting SRA file information from a public repository
+description: Where to get SRA files, and what SRA files are
 ---
-
-This tutorial is intended to show you how to download publicaly available ChIP-sea and ATAC-seq SRA files 
-from the GEO repository and process them to produce `.bam` and `.bed` files for downstream analyses. 
-
-Whilst there are more efficent tools available to automate the processes described here, I think it is 
-important to run each step individually when starting out to get a better handle what is going on and to 
-understand how and why we modify the various file formats at each stage.  
 
 ### What is an [SRA file](https://en.wikipedia.org/wiki/Sequence_Read_Archive)?
 
@@ -17,7 +10,7 @@ SRA stands for sequence read archive and the archive is a bioinformatics databas
 SRA files are stored in the archive and can come in many formats `.bam`, `.bed` etc. but, in this tutorial,
 we are interested in downloading `.fastq` SRA files.
 
-### Downloading SRA files
+### Where are the files stored?
 
 The [Gene Expression Omnibus](https://www.ncbi.nlm.nih.gov/geo/) (GEO) is a public functional genomics data 
 repository containing array- and sequenced based data. Although other repositories exist, some which require 
@@ -33,16 +26,22 @@ typo somewhere and download a completely different file from a different study!
 
 ***
 
+### Open a text editor
+
 We start by opening a text file in our home folder on ROCKS.
 
      nano sra_files.txt
 
-This opens a new `.txt` file called `sra_files`in the text editor called `nano`. `Nano` has basic functionality, 
+This opens a new `.txt` file called '*sra_files*' in the text editor called `nano`. `Nano` has basic functionality, 
 many use `vim`, but nano is fine for our purposes here. We want to copy all the SRA numbers of the SRA files 
 we're interested in into this file. 
 
 Leave the `nano` window open, and in your web browser navigate to this GEO page in a separtae tab (use the GEO 
 link above). 
+
+***
+
+### Obtain SRA files from  GEO repository for study of interest
 
 Normally you'll be directed to a GEO repository from a paper you are interested in. This will provide you with 
 a GEO accession number like **GSEXXXXX** which is the code for the central page containing the data associated 
@@ -58,17 +57,17 @@ and 11 ChIP-seq samples.
 
 Go back to the top of the page and click the `Query DataSets for GSE63137` link.
 
-![useful image]({{ site.baseurl }}/blob/gh-pages//assets/get_QueryDataset.png)
+![useful image]({{ site.baseurl }}/blob/gh-pages/assets/get_QueryDataset.png)
 
 This takes you to another list of all the replicates in the repo. We want the SRA numbers for files 10-26 inclusive. 
 Navigate to file `10`, which is the first ChIP-seq dataset, and select the 'SRA Run Selector' link. 
 
-![useful image]({{ site.baseurl }}/blob/gh-pages//assets/getSRA_SRARunSelector.png)
+![useful image]({{ site.baseurl }}/blob/gh-pages/assets/getSRA_SRARunSelector.png)
 
 This takes us to the page containing the SRA file number/s for that replicate. The SRA number we need is listed next to `Run:` and is 
 SRR1647895.
 
-![useful image]({{ site.baseurl }}/blob/gh-pages//assets/getSRA_SRAnumber.png)
+![useful image]({{ site.baseurl }}/blob/gh-pages/assets/getSRA_SRAnumber.png)
 
 Note: Occasionally there are more than one SRA files per replicate, this means that the data was generated over 
 multiple lanes in the sequencer and the files would need to be merged in the in the pipeline.

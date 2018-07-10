@@ -5,6 +5,13 @@ tagline: With a few additional extras
 description: Basic walkthrough for processing sequencing data
 ---
 
+This tutorial is intended to show you how to download publicaly available ChIP-sea and ATAC-seq SRA files from the GEO repository 
+and process them to produce .bam and .bed files for downstream analyses.
+
+Whilst there are more efficent tools available to automate the processes described here, I think it is important to run each step 
+individually when starting out to get a better handle what is going on and to understand how and why we modify the various file 
+formats at each stage.
+
 ## Preparation 
 
 In order to follow this tutorial you will need to have basic knowledge of the following;
@@ -17,14 +24,13 @@ Links other pages.
 
 - [Overview](pages/overview.html)
 - [Required packages](pages/required_packages.html)
-- [Get SRA files](pages/get-sra.html)
-- [Create fastq files](pages/create_fastq.html)
-- [Fastqc](pages/fastqc.html)
+- [Get SRA files](pages/get_sra_info.html)
+- [Download SRA files](download_SRA_files.html)
+- [SRA to fastq](pages/SRA_2_fastq.html)
+- [Quality control - FastQC/MultiQC](pages/fastqc.html)
 - [Alignment](pages/alignment.html)
 - [Sam2Bam](pages/sam2bam.html)
 - [Calling_peaks](pages/calling_peaks.html)
-- []()
-
 
 ---
 
