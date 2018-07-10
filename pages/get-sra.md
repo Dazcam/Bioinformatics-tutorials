@@ -5,48 +5,85 @@ description: Basic high thoughput sequencing walkthrough
 ---
 
 This tutorial is intended to show you how to download publicaly available ChIP-sea and ATAC-seq SRA files 
-from a public repository and process them to produce `.bam` and `.bed` files for downstream analyses. 
+from the GEO repository and process them to produce `.bam` and `.bed` files for downstream analyses. 
 
 Whilst there are more efficent tools available to automate the processes described here, I think it is 
-important to run each step individually when starting out to get a better handle what is going on and 
-what each format that is generated is designed to do.  
+important to run each step individually when starting out to get a better handle what is going on and to 
+understand how and why we modify the various file formats at each stage.  
 
 ### What is an [SRA file](https://en.wikipedia.org/wiki/Sequence_Read_Archive)?
 
-SRA stands for sequence read archive is a bioinformatics database that provides a public repository 
-for DNA sequencing data. An SRA file can come in many formats `.bam`, `.bed` etc. but we are interested 
-in `.fastq` files.
+SRA stands for sequence read archive and the archive is a bioinformatics database for DNA sequencing data. 
+SRA files are stored in the archive and can come in many formats `.bam`, `.bed` etc. but, in this tutorial,
+we are interested in downloading `.fastq` SRA files.
 
 ### Downloading SRA files
 
 The [Gene Expression Omnibus](https://www.ncbi.nlm.nih.gov/geo/) (GEO) is a public functional genomics data 
 repository containing array- and sequenced based data. Although other repositories exist, some which require 
-access permissions, but many groups post their data on GEO. 
+access permissions, many groups opt to post their data on GEO. 
+
+Obtaining SRA files from GEO repositories can be quite confusing. See [here](https://www.biostars.org/p/111040/)
+for tips. The best method I've found so far is described below. 
+
+We need to find the SRA numbers for the files we are interested in and annotate them in a sensible way so we 
+can keep track of the files as they move through the pipeline and understand what they are if we come back to 
+2 years from now. TThis is probably the most important part of the whole process as you can easily make a 
+typo somewhere and download a completely different file from a different study!
+
+***
 
 We start by opening a text file in our home folder on ROCKS.
 
      nano sra_files.txt
 
-This opens a `.txt` file in the text editor called `nano`. `Nano` has basic functionality, many use `vim`, 
-but nano is fine for our purposes here. We need to copy all the SRA numbers of the SRA files we want to 
-download into this file. 
+This opens a new `.txt` file called `sra_files`in the text editor called `nano`. `Nano` has basic functionality, 
+many use `vim`, but nano is fine for our purposes here. We want to copy all the SRA numbers of the SRA files 
+we're interested in into this file. 
 
-Leave the `nano` window open, and in your web browser navigate to this GEO page in a separtae tab. 
-
-Obtaining SRA files from GEO repositories can be quite confusing. See [here](https://www.biostars.org/p/111040/) 
-for tips. The best method I've found so far is described below. This is probably the most important part of the 
-process as you can easily make a typo somewhere and download a compleletly different file. 
+Leave the `nano` window open, and in your web browser navigate to this GEO page in a separtae tab (use the GEO 
+link above). 
 
 Normally you'll be directed to a GEO repository from a paper you are interested in. This will provide you with 
-a GEO accession number like **GSEXXXXX** which is effectively the barcode for the central page for all the data
-in the repository associated with the study.
+a GEO accession number like **GSEXXXXX** which is the code for the central page containing the data associated 
+with the study.
 
-In main repo page (given in paper) go to Query DataSets for GSEXXXXX under GEO accession number near top of the page.
+The accession number for our study is **GSE63137**. Type this into the box that says '*Keyword or GEO Accession*'
+and hit 'SEARCH'.
 
-![useful image]({{ site.baseurl }}/blob/gh-pages//assets/geo_screenshot1.png)
+This takes you to the main page for our study of interest. This page provides a brief summary of the study, 
+contact details for the PIs and, if you scroll down to the 'Samples' section and hit 'More', you can see what 
+types of data are stored in the repo. We can see there are data for 31 samples in total with 6 ATAC-seq samples 
+and 11 ChIP-seq samples.
 
-This takes you to a list of all the replicates in the repo - choose SRA Run Selector to get to page containing SRA number for each replicate
-SRA number is in row titled run:SRRXXXXXXX
-Put all SRR numbers relating to your files of interest in a file called sra_list.txt, one file per line.
-Download sra files using SRA toolkit prefetch
-Then use parallel-fastq-dump to change SRA files to fastq files (see below)
+Go back to the top of the page and click the `Query DataSets for GSE63137` link.
+
+![useful image]({{ site.baseurl }}/blob/gh-pages//assets/get_QueryDataset.png)
+
+This takes you to another list of all the replicates in the repo. We want the SRA numbers for files 10-26 inclusive. 
+Navigate to file `10`, which is the first ChIP-seq dataset, and select the 'SRA Run Selector' link. 
+
+![useful image]({{ site.baseurl }}/blob/gh-pages//assets/getSRA_SRARunSelector.png)
+
+This takes us to the page containing the SRA file number/s for that replicate. The SRA number we need is listed next to `Run:` and is 
+SRR1647895.
+
+![useful image]({{ site.baseurl }}/blob/gh-pages//assets/getSRA_SRAnumber.png)
+
+Note: Occasionally there are more than one SRA files per replicate, this means that the data was generated over 
+multiple lanes in the sequencer and the files would need to be merged in the in the pipeline.
+
+There is some other important information here. Notice under `LibraryLayout:` it says `SINGLE` this means the data 
+is single ended rather than paired ended, we need to know this as it will influence some of the parameters we need to 
+specify later on.
+
+For now copy an paste the SRA numbers for all 17 replicates into the text file one file per line.
+
+As alluded to earlier, it is important to keep an accurate record of the replicate information each SRA 
+number refers to. This study is annotated fairly clearly, but this is not always the case. At this stage I usually
+create a table containing all the replicate information using abbriviated IDs. These IDs are substitued into the file
+names instead of the SRA numbers to make it easier to see what files are affected during the pipeline. 
+ 
+
+ 
+
