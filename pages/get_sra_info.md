@@ -59,7 +59,7 @@ and 11 ChIP-seq samples.
 
 Go back to the top of the page and click the `Query DataSets for GSE63137` link.
 
-![useful image]({{ site.url }}/blob/gh-pages/assets/get_QueryDataset.png)
+![useful image]({{ site.url }}/assets/get_QueryDataset.png){:height="500px" width="250"}
 
 This takes you to another list of all the replicates in the repo. We want the SRA numbers for files 10-26 inclusive. 
 Navigate to file `10`, which is the first ChIP-seq dataset, and select the 'SRA Run Selector' link. 
@@ -69,7 +69,7 @@ Navigate to file `10`, which is the first ChIP-seq dataset, and select the 'SRA 
 This takes us to the page containing the SRA file number/s for that replicate. The SRA number we need is listed next to `Run:` and is 
 SRR1647895.
 
-![useful image]({{ site.url }}/blob/gh-pages/assets/getSRA_SRAnumber.png)
+![useful image]({{ site.url }}/assets/getSRA_SRAnumber.png)
 
 Note: Occasionally there are more than one SRA files per replicate, this means that the data was generated over 
 multiple lanes in the sequencer and the files would need to be merged in the in the pipeline.
