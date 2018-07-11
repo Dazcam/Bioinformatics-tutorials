@@ -5,7 +5,7 @@ description: Calling peaks from BAM files using Macs2
 ---
 
 
-~~~ bash
+~~~bash
 # -t = treatment (i.e. ChIP) file
 # -c = control/background (i.e. INPUT) file if you have one
 # -f = file format (BAMPE for paired end data)
