@@ -24,7 +24,7 @@ Links other pages.
 
 - [Linux 101](pages/linux101.html)
 - [Required packages](pages/required_packages.html)
-- [Get SRA files](pages/get_sra_info.html)
+- [Get SRA file information](pages/get_sra_info.html)
 - [Download SRA files](pages/download_SRA_files.html)
 - [SRA to fastq](pages/SRA_2_fastq.html)
 - [Quality control - FastQC/MultiQC](pages/fastqc.html)
