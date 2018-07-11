@@ -32,4 +32,4 @@ description: Required packages for high throughput sequencing walkthrough
 * Motif analysis
   * [Homer](http://homer.ucsd.edu/homer/)
 
-
+Move onto [Get SRA files](pages/get_sra_info.html).

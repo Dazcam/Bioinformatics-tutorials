@@ -22,12 +22,13 @@ In order to follow this tutorial you will need to have basic knowledge of the fo
 
 Links other pages.
 
-- [Overview](pages/overview.html)
+- [Linux 101](pages/linux101.html)
 - [Required packages](pages/required_packages.html)
 - [Get SRA files](pages/get_sra_info.html)
 - [Download SRA files](pages/download_SRA_files.html)
 - [SRA to fastq](pages/SRA_2_fastq.html)
 - [Quality control - FastQC/MultiQC](pages/fastqc.html)
+- [Trim adapters](pages/trim_adapters.html)
 - [Alignment](pages/alignment.html)
 - [Sam2Bam](pages/sam2bam.html)
 - [Calling_peaks](pages/calling_peaks.html)
