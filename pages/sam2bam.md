@@ -1,4 +1,8 @@
-
+---
+layout: page
+title: Coverting Sam files to bam files
+description: Sam to bam file conversion using samtools
+---
 
 ### Samtools
 
@@ -11,13 +15,17 @@ However, `.sam` files are very large and are in tab-delimited format, not an ide
 manipulating programmatically. We therefore convert `.sam` files into binary format (i.e. from text
 to 1s and 0s) which makes it easier for the computer to process. For this we use `samtools view`.
 
-    for file in ls `~/sam_files`
-    do
-        prefix=$(basename ${sample} ".sam")
-        echo ${prefix}
+~~~bash
+for file in ls `~/sam_files`
+do
+
+prefix=$(basename ${sample} ".sam")
+echo ${prefix}
+
   
-        samtools view -b ${file} > ${prefix}.bam
-    done
+samtools view -b ${file} > ${prefix}.bam
+done
+~~~
 
 The `-b` parameter specifies taht we want the output to be in `.bam` format. As the default output 
 is printed to standard output (i.e. just printed to the screen) we write this to a file using `>`
@@ -29,39 +37,41 @@ Many of the packages we use downstream require the `.bam` files to be sorted and
 processing. We also use samtools for this. We can write a script containing use two simple `for` loops 
 for this.
 
-    echo "===Sorting and indexing bam_files with samtools==="
-    echo "Started sorting bam files: " 
-    /bin/date
-    echo " "
+~~~bash
+echo "===Sorting and indexing bam_files with samtools==="
+echo "Started sorting bam files: " 
+/bin/date
+echo " "
 
-    for bam in *.bam
-    do
-        name=$(echo $bam | awk -F"/" '{print $NF}' | awk -F".bam" '{print $1}')
-        echo "Sorting: "$bam
-        samtools sort $bam -o ${name}.srtd.bam
-    done
+for bam in *.bam
+do
+    name=$(echo $bam | awk -F"/" '{print $NF}' | awk -F".bam" '{print $1}')
+    echo "Sorting: "$bam
+    samtools sort $bam -o ${name}.srtd.bam
+done
 
-    echo "Bam files sorted: " 
-    /bin/date
-    echo " "
+echo "Bam files sorted: " 
+/bin/date
+echo " "
 
-    echo "Started indexing sorted bam files: " 
-    /bin/date
+echo "Started indexing sorted bam files: " 
+/bin/date
 
-    for bam in *.srtd.bam
-    do
-        name=$(echo $bam | awk -F"/" '{print $NF}' | awk -F".bam" '{print $1}')
-        echo "Indexing: "$bam
-        samtools index $bam ${name}.bam.bai
-    done 
+for bam in *.srtd.bam
+do
+    name=$(echo $bam | awk -F"/" '{print $NF}' | awk -F".bam" '{print $1}')
+    echo "Indexing: "$bam
+    samtools index $bam ${name}.bam.bai
+done 
     
-    echo "Sorted bam files indexed: " 
-    /bin/date
-    echo " "
+echo "Sorted bam files indexed: " 
+/bin/date
+echo " "
 
-    echo "Sorting and Indexing DONE: " 
-    /bin/date
-    echo "=================================================="
+echo "Sorting and Indexing DONE: " 
+/bin/date
+echo "=================================================="
+~~~
 
 Essentially all we need here are the two `for` loops. The additional `echo` statements are there to
 introduce basic scripting and to demonstrate how you can control the output of your script to tell

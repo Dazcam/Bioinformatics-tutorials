@@ -5,9 +5,9 @@ description: Required packages for high throughput sequencing walkthrough
 ---
 
 * SRA files
- * [SRA toolkit](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std))
-  * prefetch 
-  * fastq_dump 
+  * [SRA toolkit](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std))
+    * prefetch 
+    * fastq_dump 
   * [parallel-fastq-dump](https://github.com/rvalieris/parallel-fastq-dump)
 
 * Quality control

@@ -19,10 +19,14 @@ FastQC, so I wont cover this here.
 
 The command to run fastqc is simple.
 
-    for file in `ls ~/fastq_files`
-    do
-        fastqc ${file} -o ~/FastQC_files 
-    done
+~~~bash
+for file in `ls ~/fastq_files`
+do
+
+    fastqc ${file} -o ~/FastQC_files 
+
+done
+~~~
 
 This is a fairly rapid process but can be parallelised by adding the `-t` parameter followed by an
 integer for the number of fastq files in the folder.
@@ -37,16 +41,23 @@ all the fastq files pass the quality checks.
 
 First navigate to the fastq_file directory.
 
-    cd fastq_files
+~~~bash
+cd fastq_files
+~~~
 
 Then run `mutiqc`. We don't need a loop here as `multiqc` searches for all the fastqc `html` files 
 in the current directory and adds them to the `multiqc` report.
 
-    multiqc .
+~~~bash
+multiqc .
+~~~
+
 
 The `.` is linux shorthand for current directory. We would get the same result using:
 
-    multiqc ~/fastq_files
+~~~bash
+multiqc ~/fastq_files
+~~~
 
 ***
 

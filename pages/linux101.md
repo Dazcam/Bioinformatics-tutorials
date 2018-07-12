@@ -45,15 +45,21 @@ done < <(paste SRA_numbers.txt SRA_names.txt)
 ~~~
 
 As the echo statement is included above instead of this loop actually renaming everything it just prints the 
-change that it would make to the screen. If we want to actually chnage the names of the files lisetd above we 
-just remove the echo statement.
+change that would be made for each iteration of the loop. This is a great way to check if the entries in both
+files correspond before actually running the loop properly.
 
-### Subsetting fastq files
+mv SRR11111111 Sample1
+mv SRR11111112 Sample2
+mv SRR11111113 Sample3
+mv SRR11111114 Sample4
+mv SRR11111115 Sample5 
+
+If we want to actually change the names of the files listed above we just remove the echo statement.
+
+### Subsetting fastq files for testing
 
 Often when debugging a script we want to subset our fastq files so that we can significantly reduce the 
 processing time for every step in our script rather than run all the data through at once. 
-
-### Subsetting fastq files for testing
 
 ~~~bash
 # read the compressed forward fasq file, 
@@ -61,7 +67,9 @@ processing time for every step in our script rather than run all the data throug
 # first 4 million lines (equivalent to 1M sequences, 
 # as one sequence entry always span 4 lines)
 # and finally compressing it as a new file
+
 zcat pair_1.fastq.gz | sed -n 1,20000000p | gzip -c > pair-subset_1.fastq.gz
+
 # same for read 2 (the reverse read) if your data is Paired-End
 zcat pair_2.fastq.gz | sed -n 1,20000000p | gzip -c > pair-subset_2.fastq.gz
 ~~~
