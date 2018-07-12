@@ -21,6 +21,9 @@ production_url : https://Dazcam.github.io/SRA-to-Peak
 # Tell Github to use the kramdown markdown interpreter
 # (see https://help.github.com/articles/migrating-your-pages-site-from-maruku)
 markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
