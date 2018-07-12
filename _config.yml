@@ -24,6 +24,8 @@ markdown: kramdown
 kramdown:
   input: GFM
   hard_wrap: false
+  syntax_highlighter: rouge
+  extensions: fenced_code_blocks
 
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
