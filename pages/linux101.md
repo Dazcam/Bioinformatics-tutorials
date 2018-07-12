@@ -6,11 +6,11 @@ description: Some useful linux tips for bioinformatics
 
 ### Renaming groups of files
 
-~~~bash
+{% highlight bash %}
 while read -r old new; do
    echo mv "$old" "$new"
 done < <(paste listA listB)
-~~~
+{% endhighlight %}
 
 ``` bash
 ### Subsetting fastq files for testing
