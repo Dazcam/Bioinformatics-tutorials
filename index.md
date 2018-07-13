@@ -31,8 +31,11 @@ Links other pages.
 - [Trim adapters](pages/trim_adapters.html)
 - [Alignment](pages/alignment.html)
 - [Sam2Bam](pages/sam2bam.html)
-- [Calling_peaks](pages/calling_peaks.html)
-
+- [Merging `.bam` files](bam_merging.html)
+- [Calling peaks](pages/calling_peaks.html)
+- [Removing blacklisted regions](remove_blacklist_regions.html]
+- [Merging `.bed` files](bed_merging.html)
+- [Useful Links](pages/useful_links.html)
 ---
 
 The source for this tutorial is [on github](https://github.com/Dazcam/SRA_to_Peak).
