@@ -57,19 +57,32 @@ contact details for the PIs and, if you scroll down to the 'Samples' section and
 types of data are stored in the repo. We can see there are data for 31 samples in total with 6 ATAC-seq samples 
 and 11 ChIP-seq samples.
 
+
 Go back to the top of the page and click the `Query DataSets for GSE63137` link.
 
+***
+
 ![image1]({{ site.baseurl }}/assets/geo_screenshot1.png)
+
+***
 
 This takes you to another list of all the replicates in the repo. We want the SRA numbers for files 10-26 inclusive. 
 Navigate to file `10`, which is the first ChIP-seq dataset, and select the 'SRA Run Selector' link. 
 
+***
+
 ![Image2]({{ site.baseurl }}/assets/SRArunSelector.png)
+
+***
 
 This takes us to the page containing the SRA file number/s for that replicate. The SRA number we need is listed next to `Run:` and is 
 SRR1647895.
 
+***
+
 ![Image3]({{ site.baseurl }}/assets/SRAnumber.png)
+
+***
 
 Note: Occasionally there are more than one SRA files per replicate, this means that the data was generated over 
 multiple lanes in the sequencer and the files would need to be merged in the in the pipeline.
