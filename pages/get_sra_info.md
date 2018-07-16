@@ -62,7 +62,7 @@ Go back to the top of the page and click the `Query DataSets for GSE63137` link.
 
 ***
 
-![image1]({{ site.baseurl }}/assets/geo_screenshot1.png){:height="250px" width="500px"}
+![image1]({{ site.baseurl }}/assets/geo_screenshot1.png){:height="250px" width="500px"}{: .center-image }
 
 ***
 
@@ -71,7 +71,7 @@ Navigate to file `10`, which is the first ChIP-seq dataset, and select the 'SRA 
 
 ***
 
-![Image2]({{ site.baseurl }}/assets/SRArunSelector.png)
+![Image2]({{ site.baseurl }}/assets/SRArunSelector.png){:height="150px" width="300px"}{: .center-image }
 
 ***
 
@@ -80,7 +80,7 @@ SRR1647895.
 
 ***
 
-![Image3]({{ site.baseurl }}/assets/SRAnumber.png)
+![Image3]({{ site.baseurl }}/assets/SRAnumber.png){:height="150px" width="300px"}{: .center-image }
 
 ***
 
