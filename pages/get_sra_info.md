@@ -62,7 +62,7 @@ Go back to the top of the page and click the `Query DataSets for GSE63137` link.
 
 ***
 
-![image1]({{ site.baseurl }}/assets/geo_screenshot1.png)
+![image1]({{ site.baseurl }}/assets/geo_screenshot1.png){:height="50px" width="100px"}
 
 ***
 
