@@ -11,6 +11,8 @@ information so experienced users should skip this.
 This is by no means exaustive, and not the best resource available, it contains enough to get started and is
 the 'obvious' stuff I wish I knew when I was starting out. 
 
+*** 
+
 ### Open a terminal
 
 To open a terminal on a mac press and hold *cmd* then press *space* to open spotlight. Type '*terminal*'.
@@ -19,6 +21,8 @@ This opens a window in your home folder. For instructions on how to do this on a
 The terminal is just an alternative way to access the filing system on your computer without using the graphical
 user interface (GUI). So instead of seeing icons which represent folders and programs we just see lists. 
 Whenever we open a terminal window for the first time we are located in the home directory of our computer. 
+
+***
 
 ### Navigation
 
@@ -118,58 +122,7 @@ ls -a
 Note that there are several files that begin with `.`, these are the hidden files. The most important one for 
 our purposes is the file called `.bash_profile`.  
 
-
-### Renaming groups of files
-
-It is important to rename all your SRA/fastq files at the start of a bioinformatics pipeline to something 
-concise and memorable so that you can see at a glance what replicate/sample each file relates to. This 
-naming structure will then be maintained through all the subsequent steps in the pipeline.
-
-There are many ways to do this but a simple and easily understandable method is to create two text files, 
-one called *SRA_numbers.txt* and the other called *SRA_names.txt*. We add the SRA numbers one per line to 
-*SRA_numbers.txt*.
-
-~~~bash
-SRR11111111
-SRR11111112
-SRR11111113
-SRR11111114
-SRR11111115
-~~~
-
-Then add a memorable name, perhaps containing the lead author of the paper and some replicate information, 
-for each SRA file to the *SRA_names.txt*, ensuring the positions in each text file for SRA numbers and 
-corresponding new name match.
-
-~~~bash
-Sample1
-Sample2
-Sample3
-Sample4
-Sample5
-~~~
-
-We then use a simple `while` loop, along with the paste function, to read in both text files and pass the 
-contents SRA_numbers.txt to the variable `old` and the contents SRA_names.txt to the varible new, one line 
-at a time. The old and new variables are then passed to the `mv` function which rename the files accordingly.
-
-~~~bash
-while read -r old new; do
-   echo mv "${old}.sra" "${new}.sra"
-done < <(paste SRA_numbers.txt SRA_names.txt)
-~~~
-
-As the echo statement is included above instead of this loop actually renaming everything it just prints the 
-change that would be made for each iteration of the loop. This is a great way to check if the entries in both
-files correspond before actually running the loop properly.
-
-mv SRR11111111 Sample1
-mv SRR11111112 Sample2
-mv SRR11111113 Sample3
-mv SRR11111114 Sample4
-mv SRR11111115 Sample5 
-
-If we want to actually change the names of the files listed above we just remove the echo statement.
+***
 
 ### Subsetting fastq files for testing
 
