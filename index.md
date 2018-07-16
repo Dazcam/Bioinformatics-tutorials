@@ -31,11 +31,12 @@ Links other pages.
 - [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/fastqc.html)
 - [Trim adapters]({{ site.baseurl }}/pages/trim_adapters.html)
 - [Alignment]({{ site.baseurl }}/pages/alignment.html)
-- [Sam2Bam]({{ site.baseurl }}/pages/sam2bam.html)
-- [Merging `.bam` files]({{ site.baseurl }}/bam_merging.html)
+- [Converting sam files to bam files]({{ site.baseurl }}/pages/sam2bam.html)
+- [Merging bam files]({{ site.baseurl }}/pages/bam_merging.html)
 - [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html)
 - [Removing blacklisted regions]({{ site.baseurl }}/remove_blacklist_regions.html)
-- [Merging `.bed` files]({{ site.baseurl }}/bed_merging.html)
+- [Merging bed files]({{ site.baseurl }}/pages/bed_merging.html)
+- [Additional tools]({{ site.baseurl }}/extra_tools.html)
 - [Useful Links]({{ site.baseurl }}/pages/useful_links.html)
 
 ***

@@ -37,7 +37,7 @@ cd bickmore2016_hMG_ChIP_study
 ~~~
 
 ~~~bash
-mkdir -p sra_files fastq_files/FastQC sam_files bam_files bed_files scripts output
+mkdir -p sra_files fastq_files/FastQC genomes_and_index_files sam_files bam_files bed_files scripts output
 ~~~
 
 This creates individual directories for all the files we intend to generate. Most a self explanatory, however
