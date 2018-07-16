@@ -18,13 +18,13 @@ To do this for individual files we use `fastq-dump`, which is also part of the S
 For single ended files you can simply use a for loop to pass the files we downloaded to `fastq-dump` one at a
 time.
 
-~~bash
+~~~bash
 for file in $(<sra_list.txt)
 do
 
 fastq-dump ~/ncbi/public/sra/${file}.sra --outdir ~/fastq_files --gzip
 done
-~~
+~~~
 
 Note that we add the location that the files were downloaded to `~/ncbi/public/sra/` and the `.sra` to suffix
 to each *sra number* we read in. We specify the output directory using the `--outdir` flag and the `--gzip`
@@ -34,9 +34,9 @@ flag tells the program to *zip* the *fastq files* to save storage space.
 
 For paired ended data we only add one extra parameter `--split-reads` to the above line of code:
 
-~~bash
+~~~bash
 fastq-dump ~/ncbi/public/sra/${file}.sra --outdir ~/fastq_files --split-files --gzip
-~~
+~~~
 
 This extracts the paired ended data into separate files. However, this can be a bit of a bottleneck in the pipeline so
 there is another package called `parallel-fastq-dump` that can speed up the process.
@@ -55,14 +55,14 @@ The cluster parameters I set for this are `#$ -pe smp 8`, `#$ -l h_vmem=5G` so t
 in total for the fastq file conversion. We also add the `--sra-id`` parameter before the input file when
 using parallel-fastq-dump.
 
-~~bash
+~~~bash
 for file in $(<sra_list.txt)
 do
 
    parallel-fastq-dump --sra-id ~/ncbi/public/sra/${file}.sra --threads 8 \
    --outdir /c8000xd3/big-c1477909/PhD/sra_files/ --split-files --gzip
 done
-~~
+~~~
 
 The cluster parameters I set for this are `#$ -pe smp 8`, `#$ -l h_vmem=5G` so thats 40Gs of memory allocated in
 total for the fastq file conversion.

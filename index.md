@@ -34,9 +34,9 @@ Links other pages.
 - [Converting sam files to bam files]({{ site.baseurl }}/pages/sam2bam.html)
 - [Merging bam files]({{ site.baseurl }}/pages/bam_merging.html)
 - [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html)
-- [Removing blacklisted regions]({{ site.baseurl }}/remove_blacklist_regions.html)
+- [Removing blacklisted regions]({{ site.baseurl }}/pages/remove_blacklist_regions.html)
 - [Merging bed files]({{ site.baseurl }}/pages/bed_merging.html)
-- [Additional tools]({{ site.baseurl }}/extra_tools.html)
+- [Additional tools]({{ site.baseurl }}/pages/extra_tools.html)
 - [Useful Links]({{ site.baseurl }}/pages/useful_links.html)
 
 ***
