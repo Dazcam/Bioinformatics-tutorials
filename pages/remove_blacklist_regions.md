@@ -1,10 +1,8 @@
-
 ---
 layout: page
 title: Removing blacklisted regions
 description: Removing blackisted regions from .bed files
 ---
-
 
 Black listed regions are genomic regions that ENCODE found commonly provide false positive peaks across 
 multiple ChIP/INPUT samples. These tend to be repetitive regions of the genome, or centromere/telmomeres. 
@@ -15,7 +13,8 @@ Bedtools documentation is excellent and is found [here](http://bedtools.readthed
 
 ### Download blacklisted files for hg19
 
-We use `wget` to download the blacklisted regions for hg19. Regions for hg38 are also available in the link above.
+We use `wget` to download the blacklisted regions for hg19 from the brod institute. Regions for hg38 are 
+also available in the link above.
 
 ~~~bash
 wget http://mitra.stanford.edu/kundaje/akundaje/release/blacklists/hg19-human/Anshul_Hg19UltraHighSignalArtifactRegions.bed.gz
