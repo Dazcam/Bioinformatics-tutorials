@@ -6,8 +6,8 @@ description: Quality control of fastq files using FastQC and MultiQC
 
 It is important to check the quality of the fastq files you have generated. It is possible, though
 rare, that files are corrupted whilst downloading them from the public repository. Similarly the
-group that uploaded the data may have less/more stringent quality control considerations than your 
-own group. 
+group that uploaded the data may have been less/more stringent in their quality control 
+considerations than your own group. 
 
 ### FastQC
 
@@ -23,7 +23,7 @@ The command to run fastqc is simple.
 for file in `ls ~/fastq_files`
 do
 
-    fastqc ${file} -o ~/FastQC_files 
+    fastqc ${file} -o ~/fastq_files/FastQC/
 
 done
 ~~~
@@ -35,7 +35,7 @@ integer for the number of fastq files in the folder.
 
 ### MultiQC
 
-As often we have sereral fastqc `htmls` to inspect at once, the package MultiQC, condenses all the
+Often we have sereral fastqc `htmls` to inspect at once, the package MultiQC, condenses all the
 information from all the FastQC reports into a single document making easier to quickly assess if 
 all the fastq files pass the quality checks. 
 
@@ -58,6 +58,18 @@ The `.` is linux shorthand for current directory. We would get the same result u
 ~~~bash
 multiqc ~/fastq_files
 ~~~
+
+If we are working on can then inspect the multiqc.html in your web browser. To open this from 
+terminal on a mac use the `open` command.
+
+~~~bash
+open multiqc.html
+~~~
+
+However of you are running this on a cluster the easiest way to visualise the html report is to 
+install a file trasfer package such as [Filezilla](https://filezilla-project.org) and transferring 
+the html from the cluster to you machine.
+ 
 
 ***
 

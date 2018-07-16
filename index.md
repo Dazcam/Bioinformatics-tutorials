@@ -23,7 +23,7 @@ In order to follow this tutorial you will need to have basic knowledge of the fo
 Links other pages.
 
 - [Linux 101]({{ site.baseurl }}/pages/linux101.html)
-- [Required packages]({{ site.baseurl }}/pages/required_packages.html)
+- [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html)
 - [Getting started]({{ site.baseurl }}/pages/getting_started.html)
 - [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html)
 - [Download SRA files]({{ site.baseurl }}/pages/download_SRA_files.html)
