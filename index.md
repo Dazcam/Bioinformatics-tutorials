@@ -24,6 +24,7 @@ Links other pages.
 
 - [Linux 101](pages/linux101.html)
 - [Required packages](pages/required_packages.html)
+- [Getting started](pages/getting_started.html)
 - [Get SRA file information](pages/get_sra_info.html)
 - [Download SRA files](pages/download_SRA_files.html)
 - [SRA to fastq](pages/SRA_2_fastq.html)
