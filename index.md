@@ -22,22 +22,22 @@ In order to follow this tutorial you will need to have basic knowledge of the fo
 
 Links other pages.
 
-- [Linux 101](pages/linux101.html)
-- [Required packages](pages/required_packages.html)
-- [Getting started](pages/getting_started.html)
-- [Get SRA file information](pages/get_sra_info.html)
-- [Download SRA files](pages/download_SRA_files.html)
-- [SRA to fastq](pages/SRA_2_fastq.html)
-- [Quality control - FastQC/MultiQC](pages/fastqc.html)
-- [Trim adapters](pages/trim_adapters.html)
-- [Alignment](pages/alignment.html)
-- [Sam2Bam](pages/sam2bam.html)
-- [Merging `.bam` files](bam_merging.html)
-- [Calling peaks](pages/calling_peaks.html)
-- [Removing blacklisted regions](remove_blacklist_regions.html]
-- [Merging `.bed` files](bed_merging.html)
-- [Useful Links](pages/useful_links.html)
+- [Linux 101]({{ site.baseurl }}/pages/linux101.html)
+- [Required packages]({{ site.baseurl }}/pages/required_packages.html)
+- [Getting started]({{ site.baseurl }}/pages/getting_started.html)
+- [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html)
+- [Download SRA files]({{ site.baseurl }}/pages/download_SRA_files.html)
+- [SRA to fastq]({{ site.baseurl }}/pages/SRA_2_fastq.html)
+- [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/fastqc.html)
+- [Trim adapters]({{ site.baseurl }}/pages/trim_adapters.html)
+- [Alignment]({{ site.baseurl }}/pages/alignment.html)
+- [Sam2Bam]({{ site.baseurl }}/pages/sam2bam.html)
+- [Merging `.bam` files]({{ site.baseurl }}/bam_merging.html)
+- [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html)
+- [Removing blacklisted regions]({{ site.baseurl }}/remove_blacklist_regions.html)
+- [Merging `.bed` files]({{ site.baseurl }}/bed_merging.html)
+- [Useful Links]({{ site.baseurl }}/pages/useful_links.html)
 ---
 
-The source for this tutorial is [on github](https://github.com/Dazcam/SRA_to_Peak).
+The source for this tutorial is [on github]({{ site.baseurl }}).
 
