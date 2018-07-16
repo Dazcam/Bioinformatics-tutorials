@@ -37,7 +37,8 @@ Links other pages.
 - [Removing blacklisted regions]({{ site.baseurl }}/remove_blacklist_regions.html)
 - [Merging `.bed` files]({{ site.baseurl }}/bed_merging.html)
 - [Useful Links]({{ site.baseurl }}/pages/useful_links.html)
----
 
-The source for this tutorial is [on github]({{ site.baseurl }}).
+***
+
+The source for this tutorial is [on github](https://github.com/Dazcam/SRA-to-Peak).
 
