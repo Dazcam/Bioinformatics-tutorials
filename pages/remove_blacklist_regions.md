@@ -1,4 +1,10 @@
 
+---
+layout: page
+title: Removing blacklisted regions
+description: Removing blackisted regions from .bed files
+---
+
 
 Black listed regions are genomic regions that ENCODE found commonly provide false positive peaks across 
 multiple ChIP/INPUT samples. These tend to be repetitive regions of the genome, or centromere/telmomeres. 
