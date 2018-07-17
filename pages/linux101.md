@@ -79,13 +79,13 @@ path requires you to type the adresss of your desination directory relative to w
 to move to the `Homer` directory, withing the `Programs` directory you simply have to type:
 
 ~~~bash
-cd /Programs/Homer
+cd /Homer
 ~~~
 
 To do the same thing using the absolute path you would type:
 
 ~~~bash
-cd /Users/Darren/Desktop/Programs
+cd /Users/Darren/Desktop/Programs/Homer
 ~~~  
 
 Both methods are useful in different scenarios. 
@@ -104,6 +104,22 @@ uniquely identify the file of interest.
 Note that you can autocomplete through multiple directories consecutively if you know the names of the 
 directories you intend to move through in adavnce. If you need to see a list of the files in a particular 
 directory that start with the same letter, press `tab` twice.
+
+***
+
+
+### Assigning variables
+
+Variables are used to assign information in programming. In bash we assign variables using the `=` sign. The variable
+is on the left and the information we want to assign is on the right. It works similarly to algebra.
+
+~~bash
+x=1
+~~
+
+After typing this any time you type `echo $x` in your current shell session the computer will interpret `x` as `1`. Note
+that this is only true in the current session. In bash the `$` sign must proceed a call to any variable and spaces are
+not allowed at either sided of `=`. The 'echo' statement prints whatever comes next to the screen.
 
 ***
 

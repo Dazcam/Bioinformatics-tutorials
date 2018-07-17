@@ -91,4 +91,4 @@ Move onto [Get SRA files](pages/get_sra_info.html).
 ***
 
 Move on to [Getting started]({{ site.baseurl }}/pages/getting_started.html), or back 
-to [Linux 101]({{ site.baseurl }}/pages/linux101.html).
+to [Virtual Environments]({{ site.baseurl }}/pages/virtual_environments.html).

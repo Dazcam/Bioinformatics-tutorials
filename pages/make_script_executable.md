@@ -140,3 +140,8 @@ sequentially first to last. So, if you want to use a different version of a pack
 package, i.e. python, you should add this new executable’s folder to the start of your path. This is to ensure that when your computer is 
 searching your path for the corresponding executable, it finds the newer version of the executable first. Once the computer finds the 
 first executable it will stop searching, so will never reach the older version that occurs later in the path. 
+
+***
+
+Move on to [Virtual Environments]({{ base.url }}/pages/virtual_environments.html),
+or back to [Scope]({{ base.url }}/pages/scope.html)

@@ -6,12 +6,14 @@ description: Basic walkthrough for processing sequencing data
 ---
 
 This tutorial is aimed at the novice bioinformatician and is  intended to demonstrate how to download publicly 
-available ChIP-sea and ATAC-seq SRA files from the GEO repository and process it to produce *bam files and 
+available ChIP-sea and ATAC-seq SRA files from the GEO repository and process it to produce *bam files* and 
 *bed files* for downstream analyses.
 
 Whilst there are more efficent tools available to automate the processes described here, I think it is important 
 to run each step individually when starting out to get a better handle what is going on and to understand how 
 and why we modify the various file formats at each stage.
+
+This tutorial uses **LINUX**.
 
 ***
 
@@ -27,8 +29,8 @@ Background
 
 - [Linux 101]({{ site.baseurl }}/pages/linux101.html)
 - [Scope]({{ site.baseurl }}/pages/scope.html)
-- [Making scripts executable}({{ site.baseurl }}/pages/make_script_executable.html) 
-- [Virtual Environments]{{  site.baseurl }}/pages/virtual_environments.html)
+- [Making scripts executable]({{ site.baseurl }}/pages/make_script_executable.html) 
+- [Virtual Environments]({{  site.baseurl }}/pages/virtual_environments.html)
 - [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html)
 
 Walkthrough
