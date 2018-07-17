@@ -87,7 +87,11 @@ generated which is very useful.
 Now that you have *bam files* and *bed files* you are ready to move on to downstream apllications such as 
 motif analysis or differential expression analysis. 
 
-*** 
+***
+
+Move on to [Removing blacklisted regions]({{ site.baseurl }}/pages/remove_blacklist_regions.html), or back
+to [Merging bam files]({{ site.baseurl }}/pages/bam_merging.html).
+
 
 
 

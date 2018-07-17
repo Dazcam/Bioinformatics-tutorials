@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Removing blacklisted regions
-description: Removing blackisted regions from .bed files
+description: Removing blackisted regions from bed files
 ---
 
 Black listed regions are genomic regions that ENCODE found commonly provide false positive peaks across 
@@ -29,3 +29,8 @@ bedtools intersect -v -a ${study}_peaks.narrowPeak \
 -b Anshul_Hg19UltraHighSignalArtifactRegions.bed Duke_Hg19SignalRepeatArtifactRegions.bed \
  > ${study}_peaks.narrowPeak.blacklistRemoved.bed. 
 ~~~
+
+***
+
+Move on to [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html), or back
+to [Merging bed files]({{ site.baseurl }}/pages/bed_merging.html).

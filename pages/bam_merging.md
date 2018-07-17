@@ -63,3 +63,8 @@ Although you may need extra space my prefrence here is to use the *samtools* met
 loops/larger scripts when dealing with single files.  
 
 ***
+
+Move on to [Converting sam files to bam files]({{ site.baseurl }}/pages/sam2bam.html), or back
+to [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html).
+
+

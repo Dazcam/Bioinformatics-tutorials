@@ -142,3 +142,7 @@ zcat pair_1.fastq.gz | sed -n 1,20000000p | gzip -c > pair-subset_1.fastq.gz
 zcat pair_2.fastq.gz | sed -n 1,20000000p | gzip -c > pair-subset_2.fastq.gz
 ~~~
 
+***
+
+Move on to [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html), or back 
+to [Index]({{ site.baseurl }}/index.html).

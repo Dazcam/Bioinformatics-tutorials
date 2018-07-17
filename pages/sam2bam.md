@@ -93,3 +93,6 @@ been altered.
 Eventually you will want to remove superfluous files to save space but this method retains all files.    
 
 ***
+
+Move on to [Alignment]({{ site.baseurl }}/pages/alignment.html), or back
+to [Merging bam files]({{ site.baseurl }}/pages/bam_merging.html).

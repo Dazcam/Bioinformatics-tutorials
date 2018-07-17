@@ -50,3 +50,8 @@ As before visualise the html on a web browser.
 ![posttrim]({{ site.baseurl }}/assets/posttrim.png){:height="250px" width="500px" .center-image }
 
 ***
+
+***
+
+Move on to [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/fastqc.html), or back
+to [Alignment]({{ site.baseurl }}/pages/alignment.html).

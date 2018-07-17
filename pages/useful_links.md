@@ -1,3 +1,8 @@
+---
+layout: page
+title: Useful links
+description: Some useful ChiP-seq and ATAC-seq links
+---
 
 Some useful links for ATAC-seq and ChIP-seq
 
@@ -25,3 +30,9 @@ Some useful links for ATAC-seq and ChIP-seq
 Excellent free tutorials on bash, shell scripting and regular expression (and other stuff)
 
 + [Ryan's tutorials]((https://ryanstutorials.net)
+
+***
+
+Move on to [Index]({{ site.baseurl }}index.html),
+or back to [Additional tools]({{ site.baseurl }}/pages/extra_tools.html).
+

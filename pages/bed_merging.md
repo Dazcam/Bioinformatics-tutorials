@@ -23,5 +23,9 @@ cat ${prefix}.blrm.narrowPeak | bedtools sort -i stdin | bedtools merge -i stdin
 done
 ~~~
 
-
 FINISH THIS!!
+
+***
+
+Move on to [Removing blacklisted regions]({{ site.baseurl }}/pages/remove_blacklist_regions.html),
+or back to [Additional tools]({{ site.baseurl }}/pages/extra_tools.html).

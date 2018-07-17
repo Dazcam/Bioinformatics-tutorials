@@ -41,5 +41,14 @@ Links other pages.
 
 ***
 
+Thanks to:
+
++ [Heath O'Brien](https://github.com/hobrien) for help with content and for his [tutorials](https://hobrien.github.io/RNAseqTools/)
+ introducing me to many of the concepts here.
++ Karl Broman for the excellent tutorial on how to 
+[build a website using GitHub pages](https://github.com/kbroman/simple_site).
+
+***
+
 The source for this tutorial is [on github](https://github.com/Dazcam/SRA-to-Peak).
 

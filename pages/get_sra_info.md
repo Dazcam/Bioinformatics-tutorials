@@ -97,7 +97,9 @@ As alluded to earlier, it is important to keep an accurate record of the replica
 number refers to. This study is annotated fairly clearly, but this is not always the case. At this stage I usually
 create a table containing all the replicate information using abbriviated IDs. These IDs are substitued into the file
 names instead of the SRA numbers to make it easier to see what files are affected during the pipeline. 
- 
-Move on to [Download SRA files](pages/download_SRA_files.html), or back to [Required packages](pages/required_packages.html).
- 
 
+***
+ 
+Move on to [Download SRA files]({{ site.baseurl }}/pages/download_SRA_files.html), or back 
+to [Getting started]({{ site.baseurl }}/pages/getting_started.html).
+ 
