@@ -108,4 +108,6 @@ If we want to actually change the names of the files listed above we just remove
 
 ***
 
+Move on to [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html), or 
+back to [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html).
 

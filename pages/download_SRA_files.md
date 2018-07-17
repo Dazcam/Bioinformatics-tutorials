@@ -36,6 +36,6 @@ of a faff and beyond the scope of this tutorial. If you really want to change it
 
 ***
 
-Move on to [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html), or back
-to [SRA to fastq]({{ site.baseurl }}/pages/SRA_2_fastq.html).
+Move on to [SRA to fastq]({{ site.baseurl }}/pages/SRA_2_fastq.html), or back
+to [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html).
 

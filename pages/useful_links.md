@@ -33,6 +33,6 @@ Excellent free tutorials on bash, shell scripting and regular expression (and ot
 
 ***
 
-Move on to [Index]({{ site.baseurl }}index.html),
+Move on to [Index]({{ site.baseurl }}/index.html),
 or back to [Additional tools]({{ site.baseurl }}/pages/extra_tools.html).
 

@@ -94,5 +94,5 @@ Eventually you will want to remove superfluous files to save space but this meth
 
 ***
 
-Move on to [Alignment]({{ site.baseurl }}/pages/alignment.html), or back
-to [Merging bam files]({{ site.baseurl }}/pages/bam_merging.html).
+Move on to [Merging bam files]({{ site.baseurl }}/pages/bam_merging.html), or back
+to [Alignment]({{ site.baseurl }}/pages/alignment.html)[Merging bam files].

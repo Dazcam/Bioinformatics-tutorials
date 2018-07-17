@@ -32,5 +32,5 @@ bedtools intersect -v -a ${study}_peaks.narrowPeak \
 
 ***
 
-Move on to [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html), or back
-to [Merging bed files]({{ site.baseurl }}/pages/bed_merging.html).
+Move on to [Merging bed files]({{ site.baseurl }}/pages/bed_merging.html), or back
+to [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html).

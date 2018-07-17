@@ -69,5 +69,5 @@ total for the fastq file conversion.
 
 ***
 
-Move on to [Download SRA files]({{ site.baseurl }}/pages/download_SRA_files.html), or back
-to [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/fastqc.html).
+Move on to [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/fastqc.html), or back
+to [Download SRA files]({{ site.baseurl }}/pages/download_SRA_files.html).

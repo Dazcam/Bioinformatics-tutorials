@@ -80,3 +80,6 @@ are essentially barcodes that are added to the reads in order that the sequencer
 the other. Most modern sequencers remove recognise adater sequences and remove them from the fastq files 
 automatically, but for data generated on older machines these need to be removed programmatically. See the
 [Trim Adapter](pages/trim_adapter.html) section for an explanation of how to do this.   
+
+Move on to [Trim adapters]({{ site.baseurl }}/pages/trim_adapters.html), or back
+to [SRA to fastq]({{ site.baseurl }}/pages/SRA_2_fastq.html).

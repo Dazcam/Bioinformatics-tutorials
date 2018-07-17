@@ -27,5 +27,5 @@ FINISH THIS!!
 
 ***
 
-Move on to [Removing blacklisted regions]({{ site.baseurl }}/pages/remove_blacklist_regions.html),
-or back to [Additional tools]({{ site.baseurl }}/pages/extra_tools.html).
+Move on to [Additional tools]({{ site.baseurl }}/pages/extra_tools.html),
+or back to [Removing blacklisted regions]({{ site.baseurl }}/pages/remove_blacklist_regions.html).
