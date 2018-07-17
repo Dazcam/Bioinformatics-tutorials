@@ -16,6 +16,6 @@ description: Using virtual environments in bioinformatics
 
 ***
 
-Move on to [Installing required packages]({{ site.baseurl }}/pages/virtual_environments.html),
+Move on to [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html),
 or back to [Making scripts executable]({{ site.baseurl }}/pages/make_script_executable.html)
 
