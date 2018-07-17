@@ -17,15 +17,7 @@ This tutorial uses **LINUX**.
 
 ***
 
-## Preparation 
-
-In order to follow this tutorial you will need to have basic knowledge of the following;
-
-- Linux
-- Installing packages
-- How to use different versions of python
-
-Background
+#### Background
 
 - [Linux 101]({{ site.baseurl }}/pages/linux101.html)
 - [Scope]({{ site.baseurl }}/pages/scope.html)
@@ -33,7 +25,7 @@ Background
 - [Virtual Environments]({{  site.baseurl }}/pages/virtual_environments.html)
 - [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html)
 
-Walkthrough
+#### Walkthrough
 
 - [Getting started]({{ site.baseurl }}/pages/getting_started.html)
 - [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html)
@@ -47,6 +39,9 @@ Walkthrough
 - [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html)
 - [Removing blacklisted regions]({{ site.baseurl }}/pages/remove_blacklist_regions.html)
 - [Merging bed files]({{ site.baseurl }}/pages/bed_merging.html)
+
+#### Extra Material
+
 - [Additional tools]({{ site.baseurl }}/pages/extra_tools.html)
 - [Useful Links]({{ site.baseurl }}/pages/useful_links.html)
 
