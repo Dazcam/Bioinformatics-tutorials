@@ -52,8 +52,6 @@ file does not already exist.
 
 ### Renaming groups of files
 
-### Renaming groups of files
-
 It is important to rename all your SRA/fastq files at the start of a bioinformatics pipeline to something
 concise and memorable so that you can see at a glance what replicate/sample each file relates to. This
 naming structure will then be maintained through all the subsequent steps in the pipeline.
