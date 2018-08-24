@@ -35,11 +35,16 @@ flag tells the program to *zip* the *fastq files* to save storage space.
 For paired ended data we only add one extra parameter `--split-reads` to the above line of code:
 
 ~~~bash
-fastq-dump ~/ncbi/public/sra/${file}.sra --outdir ~/fastq_files --split-files --gzip
+fastq-dump ~/ncbi/public/sra/${file}.sra --outdir ~/fastq_files --split-files --readids --gzip
 ~~~
 
-This extracts the paired ended data into separate files. However, this can be a bit of a bottleneck in the pipeline so
-there is another package called `parallel-fastq-dump` that can speed up the process.
+This extracts the paired ended data into separate files. Both the `--split-files` and `--readids` flags are 
+essential here otherwise paired end information is not annotated correctly. the documentation for the 
+`fastq-dump` package is rubbish so it not always immediately obvious which flags are required and why, this
+[site](https://edwards.sdsu.edu/research/fastq-dump/) provides a much better description of what is needed. 
+
+This part of the pipeline can be a bit of a bottleneck so there is another package called `parallel-fastq-dump` 
+that can speed up the process. 
 
 ***
 
@@ -66,6 +71,30 @@ done
 
 The cluster parameters I set for this are `#$ -pe smp 8`, `#$ -l h_vmem=5G` so thats 40Gs of memory allocated in
 total for the fastq file conversion.
+
+***
+
+### Quick check to see if SRA files are **actually** type specifed in repo
+
+On occasion files uploaded to the SRA repo will be annotated incorrectly, i.e. the will say the are single ended 
+when in fact the are paired ended. It may not be immediately obvious that this has occured so you can do a check 
+sanity check by running this short bash script.
+
+~~bash
+#!bin/bash
+
+srr="SRR1234567.sra"
+numLines=$(fastq-dump -X 1 -Z --split-spot $srr | wc -l)
+if [ $numLines -eq 4 ]
+then
+  echo "$srr is single-end"
+else
+  echo "$srr is paired-end"
+fi
+~~ 
+
+This will run one spot (takes milliseconds) and quickly tell you if the SRA file is single or paired ended. See
+[here](https://www.biostars.org/p/139422/) for more info/options.
 
 ***
 
