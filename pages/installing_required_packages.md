@@ -1,16 +1,14 @@
 ---
 layout: page
-title: Required packages
+title: Required packages and instalation options
 description: Required packages for high throughput sequencing walkthrough
 ---
 
-### Packages you need
-
 You will need to download the following packages for this tutorial. Downloading software and keeping track of 
-which versions you used is important.          
+which versions you used is important as versions of packages may introduce new code/methods that affects output.          
 
 
-#### Package list
+### Package list
 
 * SRA files
   * [SRA toolkit](https://trace.ncbi.nlm.nih.gov/Traces/sra/sra.cgi?view=toolkit_doc&f=std)
@@ -101,5 +99,5 @@ I have messed around with many package managers but now I stick with **Conda** a
 
 ***
 
-Move on to [Getting started]({{ site.baseurl }}/pages/virtual_environments.html), or back 
+Move on to [Virtual Environments]({{ site.baseurl }}/pages/virtual_environments.html), or back 
 to [Making scripts executable]({{ site.baseurl }}/pages/make_script_executable.html).
