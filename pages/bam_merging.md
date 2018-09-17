@@ -4,7 +4,7 @@ title: Merging bam files
 description: Merging bam files using samtools mergee
 ---
 
-When running a ChIP-seq or an ATAC-seq analysis there may be several points where you will have to merge files
+When running a ATAC-seq or ChIP-seq analysis there may be several points where you will have to merge files
 to pool information. This merging is usually done to *bam files* or the *bed files*. 
 
 The are two secenarios where I've needed to merge bam files.
@@ -14,6 +14,8 @@ The are two secenarios where I've needed to merge bam files.
 
 2. When multiple replicates have been produced for a ChIP treatment and/or input sample each with their own
 *bam file* and these needed to be pooled for peak calling.    
+
+***NOTE:** This section is for additonal information only - our bam files do not need to be merged.
 
 ***
 
@@ -25,10 +27,10 @@ several ChIP modifications (i.e. H3K4Me1, H3K27ac, SPI1 etc.) as well as our INP
 In order to call peaks appropriately on our data we need to pool the information in our *bam files* for all our 
 replicates. So if we have the following:
 
-+ H3K4Me1 - 3 replicates
-+ H3K27ac - 3 replicates
-+ SPI1    - 3 replicates
-+ INPUT   - 5 replicates
++ **H3K4Me1** - 3 replicates
++ **H3K27ac** - 3 replicates
++ **SPI1**    - 3 replicates
++ **INPUT**   - 5 replicates
 
 We could use samtools merge to create a pooled **bam file** for each condition.
 

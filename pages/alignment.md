@@ -115,8 +115,8 @@ it can be difficult to indentify those files that may have been corrupted.
 
 ***
 
-Move on to [Trim adapters]({{ site.baseurl }}/pages/trim_adapters.html), or back
-to [Converting sam files to bam files]({{ site.baseurl }}/pages/sam2bam.html).
+Move on to [Converting sam files to bam files]({{ site.baseurl }}/pages/sam2bam.html), or back
+to [Trim adapters]({{ site.baseurl }}/pages/trim_adapters.html).
 
 
 

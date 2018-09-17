@@ -7,7 +7,14 @@ description: How to download SRA files from GEO
 Once we have collected all our SRA numbers in our text file we then need to download the files to our
 local system or the cluster. We use the SRA tools tool called `prefetch` to download the SRA files.
 
-First quickly check if prefetch is installed correctly and in you current path type:
+Firstly load the sra2peak virtual environment, we need to remain in this environment until the peak 
+calling step.
+
+~~~bash
+source activate sra2peak
+~~~
+
+Then qquickly check if prefetch is installed correctly and in you current path type:
 
 ~~~bash
 prefetch 
@@ -33,6 +40,35 @@ One slight annoyance with prefetch is there is not a simple way to sepcify the o
 files they go to the following location `/home/[USER]/ncbi/public/sra/`. This can be changed but is a bit 
 of a faff and beyond the scope of this tutorial. If you really want to change it see 
 [here](https://www.biostars.org/p/175096/), but we can work around this in the next command.
+
+***
+
+### Quick check to see if SRA files are **actually** type specifed in repo
+
+On occasion files uploaded to the SRA repo will be annotated incorrectly, i.e. the will say the are single ended
+when in fact the are paired ended. It may not be immediately obvious that this has occured so you can do a quick
+sanity check by running this short bash script.
+
+~~bash
+#!bin/bash
+
+for file in $(<sra_list.txt)
+do
+
+srr="SRR2920543.sra"
+numLines=$(fastq-dump -X 1 -Z --split-spot $srr | wc -l)
+if [ $numLines -eq 4 ]
+then
+  echo "$srr is single-end"
+else
+  echo "$srr is paired-end"
+fi
+
+done
+~~ 
+
+This will run one read (takes milliseconds) and quickly tells you if the SRA file is single or paired ended. See
+[here](https://www.biostars.org/p/139422/) for more info/options.
 
 ***
 

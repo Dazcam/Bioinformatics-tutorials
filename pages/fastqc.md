@@ -9,6 +9,8 @@ rare, that files are corrupted whilst downloading them from the public repositor
 group that uploaded the data may have been less/more stringent in their quality control 
 considerations than your own group. 
 
+***
+
 ### FastQC
 
 FastQC provides an `html` document for each fastq file with key quality control metrics.
@@ -70,16 +72,17 @@ However of you are running this on a cluster the easiest way to visualise the ht
 install a file trasfer package such as [Filezilla](https://filezilla-project.org) and transferring 
 the html from the cluster to you machine.
  
-
 ***
 
 ### Common failures during QC
 
-Often you will find that fastq files fail QCing as the reads still have adapters attached to them. Adapters
+Often you will find that fastq files fail QC as the reads still have adapters attached to them. Adapters
 are essentially barcodes that are added to the reads in order that the sequencer can identify one read from 
-the other. Most modern sequencers remove recognise adater sequences and remove them from the fastq files 
+the other. Most modern sequencers recognise adapter sequences and remove them from the fastq files 
 automatically, but for data generated on older machines these need to be removed programmatically. See the
 [Trim Adapter](pages/trim_adapter.html) section for an explanation of how to do this.   
+
+***
 
 Move on to [Trim adapters]({{ site.baseurl }}/pages/trim_adapters.html), or back
 to [SRA to fastq]({{ site.baseurl }}/pages/SRA_2_fastq.html).

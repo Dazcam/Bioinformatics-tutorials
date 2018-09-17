@@ -51,7 +51,9 @@ As before visualise the html on a web browser.
 
 ***
 
+You can see that the adpaters have been successfully removed.
+
 ***
 
-Move on to [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/fastqc.html), or back
-to [Alignment]({{ site.baseurl }}/pages/alignment.html).
+Move on to [Alignment]({{ site.baseurl }}/pages/alignment.html), or back
+to [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/fastqc.html).

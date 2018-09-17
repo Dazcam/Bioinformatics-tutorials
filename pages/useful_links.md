@@ -29,7 +29,7 @@ Some useful links for ATAC-seq and ChIP-seq
 
 Excellent free tutorials on bash, shell scripting and regular expression (and other stuff)
 
-+ [Ryan's tutorials]((https://ryanstutorials.net)
++ [Ryan's tutorials](https://ryanstutorials.net)
 
 ***
 

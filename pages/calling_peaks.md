@@ -4,9 +4,9 @@ title: Peak calling with Macs2 - bed files
 description: Peak Calling
 ---
 
-Now we have our *bam files* the next thing to do is to call peaks on them. Effectively we are looking for
-genomic regions in our *bam files* that are enriched for aligned reads. We call these enriched regions
-*peaks* as they contain read pile ups that form peaks. We can observe the peaks in our bam file using 
+Now we have our *bam files* the next thing to do is to call peaks. Effectively we are looking to identify
+genomic regions in our *bam files* that contain pile ups of aligned reads. We call these read enriched 
+regions *peaks* as they contain read pile ups that form peaks. We can observe the peaks in our bam file using 
 a genome browser such as IGV. However only those peaks that surpass a statistical threshold are retained
 for downstream analysis. We can set this threshold manually. 
 
@@ -84,8 +84,9 @@ generated which is very useful.
 
 ### Downstream applications
 
-Now that you have *bam files* and *bed files* you are ready to move on to downstream apllications such as 
-motif analysis or differential expression analysis. 
+Now that you have *bam files* and *bed files* you are almost ready to move on to downstream applications 
+such as motif analysis or differential expression analysis. However, you first need to remove blacklisted 
+regions from you bed files.
 
 ***
 

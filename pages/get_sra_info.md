@@ -89,9 +89,7 @@ There is some other important information here. Notice under `LibraryLayout:` it
 is paired ended rather than single ended, we need to know this as it will influence some of the parameters we need to 
 specify later on.
 
-For now copy and paste the SRA numbers for 4 replicates into the text file one file per line. The first two are CD14+ 
-Monocyte ATAC-seq data files and the last two are CD8+ Tcell ATAC-seq data files. These cells were extracted from 
-peripheral blood.
+For now copy and paste the SRA numbers for 4 replicates into the text file one file per line.
 
 ~~~bash
 SRR2920543
@@ -100,14 +98,23 @@ SRR2920521
 SRR2920520
 ~~~
 
-The first two are CD14+ Monocyte ATAC-seq data files and the last two are CD8+ T cell ATAC-seq data files. These cells 
-were extracted from peripheral blood. Entries 56,57, 78 and 79. 
+The first two SRA numbers refer to CD14+ Monocyte ATAC-seq data files and the last two to CD8+ T cell ATAC-seq data files. 
+These data were derived from cells extracted from peripheral blood and are entries 56,57, 78 and 79 in the list of files. 
 
 As alluded to earlier, it is important to keep an accurate record of the replicate information each SRA 
 number refers to. This study is annotated fairly clearly, but this is not always the case. At this stage I usually
 create a table containing all the replicate information using abbriviated IDs. These IDs are substitued into the file
 names instead of the SRA numbers to make it easier to see what files are affected during the pipeline. 
 
+To save and close the text file in **nano** press:
+
+~~~bash
+ctrl x
+
+y
+
+then enter
+~~~
 ***
  
 Move on to [Download SRA files]({{ site.baseurl }}/pages/download_SRA_files.html), or back 
