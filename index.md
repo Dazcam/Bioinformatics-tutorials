@@ -22,8 +22,8 @@ This tutorial uses **LINUX**.
 - [Linux 101]({{ site.baseurl }}/pages/linux101.html)
 - [Scope]({{ site.baseurl }}/pages/scope.html)
 - [Making scripts executable]({{ site.baseurl }}/pages/make_script_executable.html) 
-- [Virtual Environments]({{  site.baseurl }}/pages/virtual_environments.html)
 - [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html)
+- [Virtual Environments]({{  site.baseurl }}/pages/virtual_environments.html)
 
 #### Walkthrough
 

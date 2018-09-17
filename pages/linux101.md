@@ -75,20 +75,22 @@ home directory.
 ### Relative and absolute paths
 
 From the `Desktop` directory we can move forward using either relative or the absolute paths. The relative 
-path requires you to type the adresss of your desination directory relative to where you currently are. So
-to move to the `Homer` directory, withing the `Programs` directory you simply have to type:
+path requires you to type the adresss of your target  directory relative to where you currently are in the file hierarchy. So
+if you are currently located in the `/Users/Darren/Desktop/Programs/` directory, to move to the `Homer` directory, you simply 
+have to type:
 
 ~~~bash
 cd /Homer
 ~~~
 
-To do the same thing using the absolute path you would type:
+Typing the absolute path would do the same thing from your currently location:
 
 ~~~bash
 cd /Users/Darren/Desktop/Programs/Homer
 ~~~  
 
-Both methods are useful in different scenarios. 
+However, only the absolute pathw would take you to that particular folder from anywhere in the file hierarchy, as the relative 
+path can only access directories relative to the directory you are located.
 
 ***
 
@@ -96,37 +98,39 @@ Both methods are useful in different scenarios.
 
 A useful tool when using the command line is the autocomplete fuction. Rather than typing out long directory
 addresses all the time we only need to type the first letter of any directoy in the current folder and press
-the `tab` key to auto complete the name of that directory. This function is case senstive.
+the **tab** key to auto complete the name of that directory. This function is *case senstive*.
 
 If you have multiple directories starting with the same letter you need to type enough letters until you can
 uniquely identify the file of interest.
 
 Note that you can autocomplete through multiple directories consecutively if you know the names of the 
-directories you intend to move through in adavnce. If you need to see a list of the files in a particular 
-directory that start with the same letter, press `tab` twice.
+directories you intend to move through in advance. If you need to see a list of the files in a particular 
+directory that start with the same letter, press **tab** twice.
 
 ***
 
 
 ### Assigning variables
 
-Variables are used to assign information in programming. In bash we assign variables using the `=` sign. The variable
+Variables are used to assign information in programming. In bash we assign variables using the **=** sign. The variable
 is on the left and the information we want to assign is on the right. It works similarly to algebra.
 
-~~bash
+~~~bash
 x=1
-~~
+~~~
 
-After typing this any time you type `echo $x` in your current shell session the computer will interpret `x` as `1`. Note
-that this is only true in the current session. In bash the `$` sign must proceed a call to any variable and spaces are
-not allowed at either sided of `=`. The 'echo' statement prints whatever comes next to the screen.
+After you have assigned 1 to x any time you type `echo $x` the computer will interpret `x` as `1`. Note that this is 
+only true in the current session. In bash the `$` sign must proceed a call to any variable and spaces are not allowed 
+at either sided of `=`. 
+
+The 'echo' statement prints whatever comes next to the screen.
 
 ***
 
 ### Hidden files
 
 When we type `ls` on the command line we are not presented with a list all the files in the current directory.
-Most working directories contain a series of 'hidden' files that are there to run background processes for 
+Most working directories contain a series of **'hidden'** files that are there to run background processes for 
 specific programs. They are not immediatly accessible as, generally, altering these files is not recommended.
 
 We can view these files by adding the `-a` flag to the ls call.
@@ -135,7 +139,7 @@ We can view these files by adding the `-a` flag to the ls call.
 ls -a
 ~~~
 
-Note that there are several files that begin with `.`, these are the hidden files. The most important one for 
+Note that there are several files that begin with **.**, these are the hidden files. The most important one for 
 our purposes is the file called `.bash_profile`.  
 
 ***
@@ -160,5 +164,5 @@ zcat pair_2.fastq.gz | sed -n 1,20000000p | gzip -c > pair-subset_2.fastq.gz
 
 ***
 
-Move on to [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html), or back 
+Move on to [Scope]({{ site.baseurl }}/pages/scope.html), or back 
 to [Index]({{ site.baseurl }}/index.html).
