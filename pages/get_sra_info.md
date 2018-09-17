@@ -6,8 +6,8 @@ description: Where to get SRA files, and what SRA files are
 
 ### What is an [SRA file](https://en.wikipedia.org/wiki/Sequence_Read_Archive)?
 
-SRA stands for sequence read archive and the archive is a bioinformatics database for DNA sequencing data. 
-SRA files are stored in the archive and can come in many formats `.bam`, `.bed` etc. but, in this tutorial,
+SRA stands for sequence read archive. SRA files are stored on bioinformatics databases that store DNA 
+sequencing data. SRA files are stored in many formats `.bam`, `.bed` etc. but, in this tutorial,
 we are interested in downloading `.fastq` SRA files.
 
 ### Where are the files stored?
@@ -17,18 +17,18 @@ repository containing array- and sequenced based data. Although other repositori
 access permissions, many groups opt to post their data on GEO. 
 
 Obtaining SRA files from GEO repositories can be quite confusing. See [here](https://www.biostars.org/p/111040/)
-for tips. The best method I've found so far is described below. 
+for tips. The best method I've found so far to download files is described below. 
 
 We need to find the SRA numbers for the files we are interested in and annotate them in a sensible way so we 
-can keep track of the files as they move through the pipeline and understand what they are if we come back to 
-2 years from now. TThis is probably the most important part of the whole process as you can easily make a 
-typo somewhere and download a completely different file from a different study!
+can keep track of the files as they move through the pipeline and to easily recognise them if we come back to 
+look at them 2 years from now. This is probably the most important part of the whole process as you can easily 
+make a typo somewhere and download a completely different file from a different study!
 
 ***
 
 ### Open a text editor
 
-We start by opening a text file in our home folder on ROCKS.
+We start by opening a text file in our home folder.
 
 ~~~bash
 nano sra_files.txt
@@ -38,7 +38,7 @@ This opens a new `.txt` file called '*sra_files*' in the text editor called `nan
 many use `vim`, but nano is fine for our purposes here. We want to copy all the SRA numbers of the SRA files 
 we're interested in into this file. 
 
-Leave the `nano` window open, and in your web browser navigate to this GEO page in a separtae tab (use the GEO 
+Leave the `nano` window open, and in your web browser navigate to this GEO page in a separate tab (use the GEO 
 link above). 
 
 ***
@@ -49,16 +49,14 @@ Normally you'll be directed to a GEO repository from a paper you are interested 
 a GEO accession number like **GSEXXXXX** which is the code for the central page containing the data associated 
 with the study.
 
-The accession number for our study is **GSE63137**. Type this into the box that says '*Keyword or GEO Accession*'
+The accession number for our study is **GSE74912**. Type this into the box that says '*Keyword or GEO Accession*'
 and hit 'SEARCH'.
 
 This takes you to the main page for our study of interest. This page provides a brief summary of the study, 
 contact details for the PIs and, if you scroll down to the 'Samples' section and hit 'More', you can see what 
-types of data are stored in the repo. We can see there are data for 31 samples in total with 6 ATAC-seq samples 
-and 11 ChIP-seq samples.
+types of data are stored in the repo. We can see there are data for 31 samples in total with 130 ATAC-seq samples.
 
-
-Go back to the top of the page and click the `Query DataSets for GSE63137` link.
+Go back to the top of the page and click the `Query DataSets for GSE74912` link.
 
 ***
 
@@ -87,11 +85,23 @@ SRR1647895.
 Note: Occasionally there are more than one SRA files per replicate, this means that the data was generated over 
 multiple lanes in the sequencer and the files would need to be merged in the in the pipeline.
 
-There is some other important information here. Notice under `LibraryLayout:` it says `SINGLE` this means the data 
-is single ended rather than paired ended, we need to know this as it will influence some of the parameters we need to 
+There is some other important information here. Notice under `LibraryLayout:` it says *PAIRED* this means the data 
+is paired ended rather than single ended, we need to know this as it will influence some of the parameters we need to 
 specify later on.
 
-For now copy an paste the SRA numbers for all 17 replicates into the text file one file per line.
+For now copy and paste the SRA numbers for 4 replicates into the text file one file per line. The first two are CD14+ 
+Monocyte ATAC-seq data files and the last two are CD8+ Tcell ATAC-seq data files. These cells were extracted from 
+peripheral blood.
+
+~~~bash
+SRR2920543
+SRR2920542
+SRR2920521
+SRR2920520
+~~~
+
+The first two are CD14+ Monocyte ATAC-seq data files and the last two are CD8+ T cell ATAC-seq data files. These cells 
+were extracted from peripheral blood. Entries 56,57, 78 and 79. 
 
 As alluded to earlier, it is important to keep an accurate record of the replicate information each SRA 
 number refers to. This study is annotated fairly clearly, but this is not always the case. At this stage I usually

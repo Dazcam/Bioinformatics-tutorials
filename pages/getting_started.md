@@ -22,31 +22,38 @@ If we try to output a file to a non-existant location most programs will throw a
 To make	a directory we use the `mkdir` command.
 
 ~~~bash
-mkdir bickmore2016_hMG_ChIP_study
+mkdir Corces2016_BloodATAC
 ~~~
 
 This creates a file for our study with an informative name using the first author and the date of our study
-of interest and some information about the cell type of interest and the functional genomics technique used
+of interest and some information about the cell type and functional genomics technique used
 in the study.
 
 Next move into the new directory and create a series of sub-directories to store all the files we are going 
 generate.
 
 ~~~bash
-cd bickmore2016_hMG_ChIP_study
+cd Corces2016_BloodATAC
 ~~~
 
 ~~~bash
-mkdir -p sra_files fastq_files/FastQC genomes_and_index_files sam_files bam_files bed_files scripts output
+mkdir -p sra_files fastq_files/FastQC genomes_and_index_files sam_files bam_files bed_files \
+scripts output
 ~~~
 
-This creates individual directories for all the files we intend to generate. Most a self explanatory, however
+This creates individual directories for all the files we intend to generate. Most are self explanatory, however
 the `output` directory is for any output generated our pipeline and I always include a scripts folder to store
 any additional scripts I generate. Notice that we have created a nested folder structure in the fastq_files
 folder. 
 
 The `-p` flag tells the program to search for the file we wish to create and to only create a new one if the 
 file does not already exist. 
+
+Your *Corces2016_BloodATAC* directory should look something like this.
+
+***
+
+![fileList]({{ site.baseurl }}/assets/fileList.png)
 
 ***
 
@@ -107,5 +114,5 @@ If we want to actually change the names of the files listed above we just remove
 ***
 
 Move on to [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html), or 
-back to [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html).
+back to [Virtual Environments]({{ site.baseurl }}/pages/virtual_environments.html).
 
