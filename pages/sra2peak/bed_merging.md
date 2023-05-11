@@ -27,5 +27,5 @@ FINISH THIS!!
 
 ***
 
-Move on to [Additional tools]({{ site.baseurl }}/pages/extra_tools.html),
-or back to [Removing blacklisted regions]({{ site.baseurl }}/pages/remove_blacklist_regions.html).
+Move on to [Additional tools]({{ site.baseurl }}/pages/sra2peak/extra_tools.html),
+or back to [Removing blacklisted regions]({{ site.baseurl }}/pages/sra2peak/remove_blacklist_regions.html).
