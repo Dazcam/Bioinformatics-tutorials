@@ -10,6 +10,8 @@ description: MAGMA gene set analysis
 + [MAGMA Docs](https://ctg.cncr.nl/software/magma)
 + [Paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004219)
 
+***
+
 **1. Annotation - map SNPs (from GWAS sumstats file) to genes**
 
 ```bash
