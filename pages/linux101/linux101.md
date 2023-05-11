@@ -164,5 +164,5 @@ zcat pair_2.fastq.gz | sed -n 1,20000000p | gzip -c > pair-subset_2.fastq.gz
 
 ***
 
-Move on to [Scope]({{ site.baseurl }}/pages/scope.html), or back 
+Move on to [Scope]({{ site.baseurl }}/pages/linux101/scope.html), or back 
 to [Index]({{ site.baseurl }}/index.html).
