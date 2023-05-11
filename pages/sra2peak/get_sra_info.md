@@ -117,6 +117,6 @@ then enter
 ~~~
 ***
  
-Move on to [Download SRA files]({{ site.baseurl }}/pages/download_SRA_files.html), or back 
-to [Getting started]({{ site.baseurl }}/pages/getting_started.html).
+Move on to [Download SRA files]({{ site.baseurl }}/pages/sra2peak/download_SRA_files.html), or back 
+to [Getting started]({{ site.baseurl }}/pages/sra2peak/getting_started.html).
  
