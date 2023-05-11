@@ -55,5 +55,5 @@ You can see that the adpaters have been successfully removed.
 
 ***
 
-Move on to [Alignment]({{ site.baseurl }}/pages/alignment.html), or back
-to [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/fastqc.html).
+Move on to [Alignment]({{ site.baseurl }}/pages/sra2peak/alignment.html), or back
+to [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/sra2peak/fastqc.html).
