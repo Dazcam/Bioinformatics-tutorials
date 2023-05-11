@@ -132,6 +132,6 @@ You are now set to run all the operations in this walkthrough.
 
 ***
 
-Move on to [Getting Started]({{ site.baseurl }}/pages/getting_started.html),
-or back to [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html)
+Move on to [Getting Started]({{ site.baseurl }}/pages/linux101/getting_started.html),
+or back to [Installing required packages]({{ site.baseurl }}/pages/linux101/installing_required_packages.html)
 
