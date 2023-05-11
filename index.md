@@ -13,6 +13,7 @@ These tutorials are aimed at the novice / intermediate bioinformatician. This is
 
 - [Linux 101]({{ site.baseurl }}/pages/linux101/linux101.html)
 - [ATAC-seq: SRA to peak calling]({{ site.baseurl }}/pages/sra2peak/getting_started.html)
+- [Workflow management: Snakemake]({{ site.baseurl }}/pages/snakemake/intro.html)
 
 #### Extra Material
 
