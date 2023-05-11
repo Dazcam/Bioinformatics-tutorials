@@ -1,8 +1,8 @@
-## SRA-to-Peak: A basic walkthrough for high throughput sequencing data
+## Bioinformatics tutorials
 
 This is a minimal tutorial to get started.
 
-The walkthrough is available [here](https://dazcam.github.io/SRA-to-Peak/).
+The walkthrough is available [here](https://dazcam.github.io/Bioinformatics-tutorials/).
 
 ---
 
