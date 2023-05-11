@@ -66,7 +66,7 @@ loops/larger scripts when dealing with single files.
 
 ***
 
-Move on to [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html),  or back
-to [Converting sam files to bam files]({{ site.baseurl }}/pages/sam2bam.html).
+Move on to [Calling peaks]({{ site.baseurl }}/pages/sra2peak/calling_peaks.html),  or back
+to [Converting sam files to bam files]({{ site.baseurl }}/pages/sra2peak/sam2bam.html).
 
 
