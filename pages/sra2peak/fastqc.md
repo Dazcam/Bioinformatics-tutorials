@@ -84,5 +84,5 @@ automatically, but for data generated on older machines these need to be removed
 
 ***
 
-Move on to [Trim adapters]({{ site.baseurl }}/pages/trim_adapters.html), or back
-to [SRA to fastq]({{ site.baseurl }}/pages/SRA_2_fastq.html).
+Move on to [Trim adapters]({{ site.baseurl }}/pages/sra2peak/trim_adapters.html), or back
+to [SRA to fastq]({{ site.baseurl }}/pages/sra2peak/SRA_2_fastq.html).
