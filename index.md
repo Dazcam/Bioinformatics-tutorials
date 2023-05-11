@@ -1,8 +1,8 @@
 ---
 layout: page
-title: SRA to Bed file tutorial
+title: Bioinformatics tutorials
 tagline: With a few additional extras
-description: Basic walkthrough for processing sequencing data
+description: This site contains some basic bioinformatics tutorials
 ---
 
 This tutorial is aimed at the novice bioinformatician and is  intended to demonstrate how to download publicly 
@@ -17,13 +17,10 @@ This tutorial uses **LINUX**.
 
 ***
 
-#### Background
+#### Tutorials
 
-- [Linux 101]({{ site.baseurl }}/pages/linux101.html)
-- [Scope]({{ site.baseurl }}/pages/scope.html)
-- [Making scripts executable]({{ site.baseurl }}/pages/make_script_executable.html) 
-- [Installing required packages]({{ site.baseurl }}/pages/installing_required_packages.html)
-- [Virtual Environments]({{  site.baseurl }}/pages/virtual_environments.html)
+- [Linux 101]({{ site.baseurl }}/pages/linux101/linux101.html)
+
 
 #### Walkthrough
 
