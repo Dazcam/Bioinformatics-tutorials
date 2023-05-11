@@ -1,5 +1,11 @@
 
-## MAGMA gene set analysis - essentially a 3 step process. 
+---
+layout: page
+title: MAGMA gene set analysis
+description: MAGMA gene set analysis
+--- 
+
+### MAGMA gene set analysis - essentially a 3 step process. 
 
 + [MAGMA Docs](https://ctg.cncr.nl/software/magma)
 + [Paper](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004219)
@@ -23,6 +29,7 @@ have the first 3 columns in the following format (including headers as shown and
 NOTE: The only columns you need in your GWAS file for this entire analysis are SNP, CHR, BP, P and N (if not using the `ncol` flag in step 2 below), 
 so you can ignore the others. 
 
+***
 
 
 **2. Calculate gene level trait association statistics**
@@ -40,7 +47,7 @@ magma --bfile [DATA] --gene-annot [ANNOT].genes.annot --pval [PVAL_FILE] N=[N]
 + `N` = This is the sample size of your GWAS. You can manually enter the sample size here or replace the N flag with `ncol=[N_COL]`
 where `N_COL` is the column in the GWAS file with sample size per SNP. 
  
-
+***
 
 **3. Run the gene set analysis**
 
