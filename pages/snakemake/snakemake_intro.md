@@ -1,15 +1,15 @@
 ---
 layout: page
 title: Snakemake introduction
-description: What is snakemake 
+description: What is snakemake and workflow management?
 ---
 
 ### What is snakemake?
 
 Snakemake is a workflow management and job scheduling tool which allows you to produce reproducible and 
-scaleable bioinformatics workflows efficently. Workflow management tools allow you to automate multi-step
-bioinformatics analyses (e.g. data collection, QC, processing and visualisation) and make it easier to 
-organise complex pipelines in a human readable manner. 
+scaleable bioinformatics workflows / pipelines. Workflow management tools allow you to automate multi-step
+bioinformatics analyses (e.g. data collection, QC, processing and visualisation) and organise complex pipelines 
+in a human readable manner. 
 
 Reasons for using Snakemake:
 
