@@ -99,5 +99,5 @@ I have messed around with many package managers but now I stick with **Conda** a
 
 ***
 
-Move on to [Virtual Environments]({{ site.baseurl }}/pages/virtual_environments.html), or back 
-to [Making scripts executable]({{ site.baseurl }}/pages/make_script_executable.html).
+Move on to [Virtual Environments]({{ site.baseurl }}/pages/linux101/virtual_environments.html), or back 
+to [Making scripts executable]({{ site.baseurl }}/pages/linux101/make_script_executable.html).
