@@ -1,4 +1,3 @@
-
 ---
 layout: page
 title: MAGMA gene set analysis
