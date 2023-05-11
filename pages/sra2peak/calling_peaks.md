@@ -90,8 +90,8 @@ regions from you bed files.
 
 ***
 
-Move on to [Removing blacklisted regions]({{ site.baseurl }}/pages/remove_blacklist_regions.html), or back
-to [Merging bam files]({{ site.baseurl }}/pages/bam_merging.html).
+Move on to [Removing blacklisted regions]({{ site.baseurl }}/pages/sra2peak/remove_blacklist_regions.html), or back
+to [Merging bam files]({{ site.baseurl }}/pages/sra2peak/bam_merging.html).
 
 
 
