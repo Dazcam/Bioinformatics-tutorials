@@ -72,6 +72,6 @@ This will run one read (takes milliseconds) and quickly tells you if the SRA fil
 
 ***
 
-Move on to [SRA to fastq]({{ site.baseurl }}/pages/SRA_2_fastq.html), or back
-to [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html).
+Move on to [SRA to fastq]({{ site.baseurl }}/pages/sra2peak/SRA_2_fastq.html), or back
+to [Get SRA file information]({{ site.baseurl }}/pages/sra2peak/get_sra_info.html).
 
