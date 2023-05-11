@@ -19,7 +19,7 @@ magma --annotate --window=35,10 --snp-loc [SNPLOC_FILE] --gene-loc [GENELOC_FILE
 + `SNPLOC_FILE` = A file containing SNPs/SNP locations used in the analysis. You need your GWAS sumstats file here. This needs to 
 have the first 3 columns in the following format (including headers as shown and just chromosome numbers, no chr prefixes in the `CHR` column):
 
-![magma_gwas](images/magma_gwas.png)
+![fileList]({{ site.baseurl }}/assets/fileList.png)
 
 + `GENE_LOC_FILE` = A file containing gene locations used in the analysis. Use the `.bim` file provided in the reference data for this
 (make sure it matches the reference build used for the GWAS) i.e. `g1000_eur.bim`
@@ -60,7 +60,7 @@ magma --gene-results [GENE_PREFIX].genes.raw --set-annot [SET_FILE] --out [OUTPU
 The first value on each row is the name of the gene set, followed by the IDs of genes (Entrez IDs required) in that gene set (whitespace separated). 
 Any values that do not match IDs of genes in the .genes.raw file will be ignored.
 
-![magma_gene_list](images/magma_gene_list.png)
+![fileList]({{ site.baseurl }}/assets/fileList.png)
 
 If you need to run a conditional analysis you need to add the model and condition flags to command 3. For example to run a conditional analysis 
 all gene sets in the gene set file above conditioning on `FC_ExN_2`, you would add the following: `--model condition=FC_ExN_2`. 
