@@ -159,5 +159,5 @@ first executable it will stop searching, so will never reach the older version t
 
 ***
 
-Move on to [Installing required packages]({{ base.url }}/pages/installing_required_packages.html),
-or back to [Scope]({{ site.baseurl }}/pages/scope.html).
+Move on to [Installing required packages]({{ base.url }}/pages/linux101/installing_required_packages.html),
+or back to [Scope]({{ site.baseurl }}/pages/linux101/scope.html).
