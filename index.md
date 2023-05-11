@@ -20,22 +20,7 @@ This tutorial uses **LINUX**.
 #### Tutorials
 
 - [Linux 101]({{ site.baseurl }}/pages/linux101/linux101.html)
-
-
-#### Walkthrough
-
-- [Getting started]({{ site.baseurl }}/pages/getting_started.html)
-- [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html)
-- [Download SRA files]({{ site.baseurl }}/pages/download_SRA_files.html)
-- [SRA to fastq]({{ site.baseurl }}/pages/SRA_2_fastq.html)
-- [Quality control - FastQC/MultiQC]({{ site.baseurl }}/pages/fastqc.html)
-- [Trim adapters]({{ site.baseurl }}/pages/trim_adapters.html)
-- [Alignment]({{ site.baseurl }}/pages/alignment.html)
-- [Converting sam files to bam files]({{ site.baseurl }}/pages/sam2bam.html)
-- [Merging bam files]({{ site.baseurl }}/pages/bam_merging.html)
-- [Calling peaks]({{ site.baseurl }}/pages/calling_peaks.html)
-- [Removing blacklisted regions]({{ site.baseurl }}/pages/remove_blacklist_regions.html)
-- [Merging bed files]({{ site.baseurl }}/pages/bed_merging.html)
+- [ATAC-seq: SRA to peak calling]({{ site.baseurl }}/pages/sra2peak/getting_started.html)
 
 #### Extra Material
 
