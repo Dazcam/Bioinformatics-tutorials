@@ -5,15 +5,7 @@ tagline: With a few additional extras
 description: This site contains some basic bioinformatics tutorials
 ---
 
-This tutorial is aimed at the novice bioinformatician and is  intended to demonstrate how to download publicly 
-available ChIP-sea and ATAC-seq SRA files from the GEO repository and process it to produce *bam files* and 
-*bed files* for downstream analyses.
-
-Whilst there are more efficent tools available to automate the processes described here, I think it is important 
-to run each step individually when starting out to get a better handle what is going on and to understand how 
-and why we modify the various file formats at each stage.
-
-This tutorial uses **LINUX**.
+These tutorials are aimed at the novice / intermediate bioinformatician. This is not the gospel. There are probably better ways to do things. If you find them use them. 
 
 ***
 
