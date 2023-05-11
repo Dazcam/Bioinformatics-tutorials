@@ -113,6 +113,6 @@ If we want to actually change the names of the files listed above we just remove
 
 ***
 
-Move on to [Get SRA file information]({{ site.baseurl }}/pages/get_sra_info.html), or 
-back to [Virtual Environments]({{ site.baseurl }}/pages/virtual_environments.html).
+Move on to [Get SRA file information]({{ site.baseurl }}/pages/sra2peak/get_sra_info.html), or 
+back to [Virtual Environments]({{ site.baseurl }}/pages/sra2peak/virtual_environments.html).
 
