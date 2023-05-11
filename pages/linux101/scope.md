@@ -36,5 +36,5 @@ Here the export command makes the `x` variable accessible to all subprocess run 
 
 ***
 
-Move on to [Making scripts executable](/SRA-to-Peak/pages/make_script_executable.html), or back 
-to [Linux 101]({{ site.baseurl }}/pages/linux101.html)
+Move on to [Making scripts executable](/SRA-to-Peak/pages/linux101/make_script_executable.html), or back 
+to [Linux 101]({{ site.baseurl }}/pages/linux101/linux101.html)
