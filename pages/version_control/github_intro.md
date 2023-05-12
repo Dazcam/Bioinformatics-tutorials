@@ -22,45 +22,39 @@ GitHub is a free service, and code can be made publicly or privately available.
 
 ![XKCD Branching Model](http://imgs.xkcd.com/comics/git.png)
 
-### Setup
+***
+
+### How to use Git
+
+There are several ways to work with and upload code to GitHub:
+
+- In your web browser on the GitHub website
+- On the command line
+- Using GitHub Desktop 
+- Using 3rd party applications (e.g. via R)
+
+My preference is to use the command line, though for updating README files I tend to use the browser. I'll be 
+focusing on using the command line here.
+
+***
+
+### Create a project
+
+The basic process is the following:
+
 - Create [GitHub](github.com) account and initialise a new project with ```README.md``` file
 - Click on ```clone or download``` and copy url
 - Open terminal and clone project:
-    - ```git clone URL```
-- Open ```README.md``` in text editor, modify and save
+    - ```git clone [URL]```
+- Open ```README.md``` in text editor, add some text and save it
 - Commit changes to repo and sync:
     - ```git add README.md```
     - ```git commit -m "First commit"```
     - ```git push```
-- Your changes should be visible in your GitHub project after you refresh
+- Your changes you made to the readme file should be visible in your GitHub project after you refresh
 
-### Working with GitHub Desktop
-- Installing GitHub Desktop:
-    - Available from https://desktop.github.com
-    - Log into GitHub Desktop using your GitHub credentials
-- Adding an Existing Project:
-    - Click on project selector in upper right corner of GitHub Desktop and select ```New Project```
-    - Click on ```Existing Directory``` and navigate to folder, then click ```Select Folder``` and ```Create Project```
-    - Click on ```+``` in upper left corner of GitHub Desktop, then ```Create```
-    - Navigate to folder and click ```OK```
-    - Give repository a name and create (note that redundant names in different locations on your file system will clash on the server)
-- Starting from Scratch:
-    - Click on project selector in upper right corner of GitHub Desktop and select ```New Project```
-    - Click on ```New Directory```, then ```Empty Project```, then pick a project name and location
-    - Click on ```+``` in upper left corner of GitHub Desktop, then ```Create```
-    - Navigate to folder and click ```OK```
-    - Give repository a name and create
-- To make changes to the repo:
-    - Click on ```Changes``` at top of window
-    - Select files to add
-    - Write summary of changes and (optional) description
-    - Click ```commit to master```
-- To revert changes:
-    - Click on ```History``` at top of window
-    - Navigate through commits to find the offending edit (deletions are marked red, additions are green)
-    - Click on ```Revert```
-- To sync local copy to remote server:
-    - Click ```Sync```
+***
+
 
 ### Resolving conflicts
 - If sync fails because changes on remote server can't be automatically merged with local changes, open file in your text editor and edit conflicts manually
