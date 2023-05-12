@@ -1,4 +1,8 @@
-Version control with Git
+---
+layout: page
+title: Version control with Git
+description: Version control with Git inroduction
+---
 
 Version control is an important concept in computer science. It refers to the process where as you update
 or make changes to the code you are working on, you create regular snapshots (or versions) of that project 
