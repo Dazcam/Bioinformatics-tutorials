@@ -44,7 +44,8 @@ Here is the code for a basic Snakefile. It contains two rules `all` and `process
 
 ```snakemake
 rule all:
-    expand("../results/01_process_fq/{sample}.fastq", sample = config['samples'])
+    input:
+        expand("../results/01_process_fq/{sample}.fastq", sample = config['samples'])
 
 rule process_fq:
     input:  "../resources/{sample}.fastq"
@@ -164,7 +165,7 @@ snakemake -np
 
 This has to be run from the directory that contains the `Snakefile`. During the dry run snakekame looks
 for the Snakefile then makes sure that all the input and output files in all rules are accounted for and 
-check the code for errors. 
+checks the code for errors. 
 
 
 ***
