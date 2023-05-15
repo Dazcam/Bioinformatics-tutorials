@@ -28,3 +28,26 @@ conda activate $PYDIR
 conda install -c conda-forge mamba
 mamba create -c conda-forge -c bioconda -n snakemake snakemake
 ```
+
+The following code sets up a directory tree that follows the . 
+The [Gist](https://gist.github.com/Dazcam/6284597ad17f4da278f948893007b731) for this code is here.
+
+```bash
+#!/bin/bash
+
+# Create basic smk dir tree - requires root dir as 1st param
+
+HEAD_DIR=$1
+
+mkdir -p ${HEAD_DIR}/{workflow/{envs,reports,rules,scripts},config,resources,results}
+
+touch ${HEAD_DIR}/workflow/{Snakefile,snakemake.sh} \
+${HEAD_DIR}/config/{config.yaml,cluster_config.yaml} \
+${HEAD_DIR}/{README.md,.gitignore}
+
+chmod 755 ${HEAD_DIR}/workflow/snakemake.sh
+```
+
+[test](https://gist.github.com/Dazcam/6284597ad17f4da278f948893007b731.js":include")
+
+<script src="https://gist.github.com/Dazcam/6284597ad17f4da278f948893007b731.js"></script>
