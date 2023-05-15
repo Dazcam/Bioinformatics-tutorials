@@ -85,5 +85,5 @@ Now let's create out first config file:
 
 ***
 
-Move on to [run basic snakemake process]({{ site.baseurl }}/pages/snakemake/run_basic_process.md), or back 
+Move on to [run basic snakemake process]({{ site.baseurl }}/pages/snakemake/run_basic_process.html), or back 
 to [snakemake introduction]({{ site.baseurl }}/snakemake_intro.html).
