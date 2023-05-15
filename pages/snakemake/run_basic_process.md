@@ -78,9 +78,22 @@ printf "samples:\n" > ../config/config.yaml
 for i in {1..5}; do printf "    cortex_ExN_$i:\n" >> ../config/config.yaml  ; done
 ```
 
+Which produces:
+
+```bash
+cat ../config/config.yaml 
+samples:
+    cortex_ExN_1:
+    cortex_ExN_2:
+    cortex_ExN_3:
+    cortex_ExN_4:
+    cortex_ExN_5:
+```
+
+
 Here we are creating a reference in our config file called `samples` which stores the names of our samples.
 Snakemake can reference this to populate the `{samples}` wildcard in the `process_fastq` and `all` rules. 
-Note thatif we wish to add or remove samples from the analysis that we only need to alter the config file, 
+Note that if we wish to add or remove samples from the analysis that we only need to alter the config file, 
 there is no need to alter the rules in the Snakefile. If we design our pipelines in this way it means we can
 reuse code for rules across projects. 
 
@@ -100,19 +113,58 @@ However, as we don't use the expand fuction in `process_fastq` snakemake will ru
 
 #### Cluster config file
 
-Let's populate out cluster config file:
+Let's populate out cluster config file. Copy and paste the following into 
+`/scratch/$whoami/snakemake-tutorial/config/cluster_config.yaml`:
 
+```bash
+__default__:
+    num_cores: 1
+    total_mem: 10G
+    duration: 0-05:00:00
 
+# ---------  CELL RANGER  ----------
+process_fastqs:
+    num_cores: 1
+    total_mem: 1G
+    duration: 0-01:00:00
+```
 
+In our cluster config file we can set the Slurm parameters we need for each stage of the process. We can set 
+default parameters and / or rule specific parameters. If no rule specific parameters are set snakemake will 
+automatically resort to the default.This allows us to have fine control over the resources we set for each
+rule. 
 
+***
 
+#### snakemake.sh 
 
+Finally we need to pull it all together with a shell script. This automatically manages the job scheduling 
+for the pipeline and tells the cluster what resources to allocate (no need for anymore slurm directive headers).
 
+```bash
+snakemake --use-conda --use-envmodules \
+--cluster-config ../config/cluster_config.yaml --keep-going \
+--cluster "sbatch --qos={cluster.queue} --time={cluster.duration} --account={cluster.account} --job-name={cluster.jobname} --export=ALL --no-requeue --signal=2 --mem={cluster.total_mem} --output=smk.{rule}.%J.out --error=smk.{rule}.%J.err --ntasks={cluster.num_cores}" \
+--keep-going \
+-j 50 $@ 2> smk-"`date +"%d-%m-%Y"`".log 
+mail -s "Snakemake has finished" camerond@cardiff.ac.uk < smk-"`date +"%d-%m-%Y"`".log
+```
 
+All code in curly brackets is referencing parameters we have set in the cluster config file. 
 
+***
 
+#### Dry run
 
+Before we run our first pipeline we want to do a dry run using:
 
+```bash
+snakemake -np
+``` 
+
+This has to be run from the directory that contains the `Snakefile`. During the dry run snakekame looks
+for the Snakefile then makes sure that all the input and output files in all rules are accounted for and 
+check the code for errors. 
 
 
 ***
