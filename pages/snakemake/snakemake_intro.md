@@ -96,3 +96,7 @@ in a human readable manner.
 - This is all covered in detail here:
     - Wilson, et al. (2017). Good enough practices in scientific computing. [PLoS Computational Biology, 13(6), e1005510](http://doi.org/10.1371/journal.pcbi.1005510)
 
+***
+
+Move on to [Virtual Environments]({{ site.baseurl }}/pages/snakemake/virtual_environments.html), or back 
+to [Making scripts executable]({{ site.baseurl }}/pages/linux101/make_script_executable.html).
