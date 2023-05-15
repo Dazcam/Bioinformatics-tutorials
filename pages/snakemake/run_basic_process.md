@@ -71,7 +71,39 @@ have to manage how files are tracked from rule to rule and eventally to rule `al
 
 #### Config file
 
-Now let's create out first config file:
+Now let's populate our config file:
+
+```bash
+printf "samples:\n" > ../config/config.yaml
+for i in {1..5}; do printf "    cortex_ExN_$i:\n" >> ../config/config.yaml  ; done
+```
+
+Here we are creating a reference in our config file called `samples` which stores the names of our samples.
+Snakemake can reference this to populate the `{samples}` wildcard in the `process_fastq` and `all` rules. 
+Note thatif we wish to add or remove samples from the analysis that we only need to alter the config file, 
+there is no need to alter the rules in the Snakefile. If we design our pipelines in this way it means we can
+reuse code for rules across projects. 
+
+We tell snakemake to reference the config file in the `all` directive: `sample = config['samples']`. 
+
+The expand function in rule `all` tells snakemake that there should be a final output file for every individual
+sample under the `sample:` directive in the config file. The expand function resolves to:
+
+```python
+["../resources/fq/cortex_ExN_1", "../resources/fq/cortex_ExN_2", "../resources/fq/cortex_ExN_3", "../resources/fq/cortex_ExN_4", "../resources/fq/cortex_ExN_5"]
+```
+
+However, as we don't use the expand fuction in `process_fastq` snakemake will run a seprate instance of 
+`process_fastq` for each unique sample. This allows us to run the jobs in `process_fastq` in parallel.
+
+***
+
+#### Cluster config file
+
+Let's populate out cluster config file:
+
+
+
 
 
 
