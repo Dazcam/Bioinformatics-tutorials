@@ -1,4 +1,8 @@
-
+---
+layout: page
+title: Snakemake environment setup
+description: Set up snakemake environment?
+---
 
 The following script sets up up a virtual environment called `snakemake_tutorial` in your scratch area and installs snakemake 
 and it's dependencies. As several dependency packages are downloaded to run snakemake, Mamba is downloaded first and used
