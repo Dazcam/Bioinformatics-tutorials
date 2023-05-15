@@ -26,20 +26,6 @@ in a human readable manner.
 
 ***
 
-### How does snakemake work?
-
-- Used to compile [source code](https://github.com/alexdobin/STAR/tree/master/source) into binary
-- Developed at a time when compilation was extremely resource-intensive
-- Allows "nightly builds" where only modified code is re-compiled
-- Builds a dependency tree from implicit wildcard rules
-- Can be used to develop [bioinformatics pipelines](https://swcarpentry.github.io/make-novice)
-- However: 
-    - limited functionality and flexibility
-    - perl-level syntax opacity
-    - doesn't support parallelization
- 
-***
-
 ### Benefits of using snakemake on a computer cluster
 
 - **Makes parellisation simple**: Manages scheduling of job submission to [cluster](http://snakemake.readthedocs.io/en/stable/executable.html#cluster-execution) (or to the [cloud](http://snakemake.readthedocs.io/en/stable/executable.html#cloud-support))
@@ -70,26 +56,10 @@ in a human readable manner.
     - [cluster configuration](https://github.com/hobrien/RNAseqTools/blob/master/Benchmarking/cluster_config.yaml)
     - a [bash script](https://github.com/hobrien/RNAseqTools/blob/master/Benchmarking/snakemake.sh) for invoking snakemake on the cluster, including email notification upon completion
 
-### Snakemake usage
-- Do a dry run of workflow, printing commands to screen:
-    - ```snakemake -np```
-- Produce a diagram of dependency tree:
-    - ```snakemake -n --dag | dot -Tsvg > dag.svg```
-
-![dag](https://github.com/hobrien/RNAseqTools/blob/master/Benchmarking/dag.png?raw=true)
-
-- Rerun rule (and all rules with it as a dependency):
-    - ```snakemake -R RULENAME```
-- Rerun on new input files:
-    - ```snakemake -n -R `snakemake --list-input-changes` ```
-- Rerun edited rules:
-    - ```$ snakemake -n -R `snakemake --list-params-changes` ```
-- Submit jobs to cluster:
-    - ```snakemake --use-conda --cluster-config cluster_config.yaml --cluster "qsub -pe smp {cluster.num_cores} -l h_vmem={cluster.maxvmem}" -j 20```
-
-- See [here](http://snakemake.readthedocs.io/en/stable/api_reference/snakemake.html) for additional command-line options
 
 ### Alternatives to Snakemake
+
+[Nextflow](https://www.nextflow.io)
 
 ### Links
 
@@ -98,5 +68,7 @@ in a human readable manner.
 
 ***
 
-Move on to [snakemake environment setup]({{ site.baseurl }}/pages/snakemake/snakemake_env_setup.md), or back 
+Move on to [snakemake environment setup]({{ site.baseurl }}/pages/snakemake/snakemake_env_setup.html), or back 
 to [index page]({{ site.baseurl }}/index.html).
+
+
