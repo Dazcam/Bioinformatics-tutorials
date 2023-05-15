@@ -98,5 +98,5 @@ in a human readable manner.
 
 ***
 
-Move on to [Virtual Environments]({{ site.baseurl }}/pages/snakemake/virtual_environments.html), or back 
-to [Making scripts executable]({{ site.baseurl }}/pages/linux101/make_script_executable.html).
+Move on to [snakemake environment setup]({{ site.baseurl }}/pages/snakemake/snakemake_env_setup.md), or back 
+to [index page]({{ site.baseurl }}/index.html).
