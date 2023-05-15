@@ -51,3 +51,8 @@ chmod 755 ${HEAD_DIR}/workflow/snakemake.sh
 [test](https://gist.github.com/Dazcam/6284597ad17f4da278f948893007b731.js":include")
 
 <script src="https://gist.github.com/Dazcam/6284597ad17f4da278f948893007b731.js"></script>
+
+***
+
+Move on to [run basic snakemake process]({{ site.baseurl }}/pages/snakemake/run_basic_process.md), or back 
+to [snakemake introduction]({{ site.baseurl }}/snakemake_intro.html).
