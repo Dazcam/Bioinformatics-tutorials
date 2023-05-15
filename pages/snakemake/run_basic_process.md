@@ -43,14 +43,22 @@ Which should create the following:
 Here is the code for a basic Snakefile. It contains two rules `all` and `process_fastqs`.
 
 ```snakemake
+configfile: '../config/config.yaml'
+
 rule all:
     input:
-        expand("../results/01_process_fq/{sample}.fastq", sample = config['samples'])
+	expand("../results/01_process_fq/{sample}.fastq", sample = config['samples'])
 
-rule process_fq:
-    input:  "../resources/{sample}.fastq"
+rule process_fastqs:
+    input:  "../resources/fq/{sample}.fastq"
     output: "../results/01_process_fq/{sample}.fastq"
-    shell:  "cat {input} > {output}; printf "\nfq processed.\n" >> {output}"
+    shell:
+            """
+
+            cat {input} > {output}
+            printf "\nfq processed.\n" >> {output}"
+
+            """
 ```
 
 The `process_fastq` rule has 3 directives `input`, `output` and `shell`. The `input` directive
