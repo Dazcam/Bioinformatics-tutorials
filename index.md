@@ -16,6 +16,7 @@ These tutorials are aimed at the novice / intermediate bioinformatician. This is
 - [Workflow management: Snakemake]({{ site.baseurl }}/pages/snakemake/snakemake_intro.html)
 - [Version control: Github]({{ site.baseurl }}/pages/version_control/github_intro.html)
 - [Gene set enrichment: MAGMA]({{ site.baseurl }}/pages/magma/magma_intro.html)
+- [Test]({{ site.baseurl }}/pages/machine_learning/machine_learning_intro.html)
 
 #### Extra Material
 
