@@ -19,8 +19,8 @@ We will discuss these below.
 
 #### Create dummy fastq files
 
-First navigate to the `/scratch/$whoami/snakemake-tutorial/workflow/` directory and create
-some dummy fastq files.
+First navigate to the `/scratch/$(whoami)/smk-tutorial/workflow/` directory and create
+some dummy fastq files:
 
 ```bash
 mkdir -p ../resources/fq
@@ -59,7 +59,7 @@ rule process_fastqs:
             """
 
             cat {input} > {output}
-            printf "\nfq processed.\n" >> {output}"
+            printf "\nfq processed.\n" >> {output}
 
             """
 ```
@@ -172,6 +172,9 @@ Let's populate out cluster config file. Copy and paste the following into
 
 ```bash
 __default__:
+    account:
+    jobname: smk_tutorial
+    queue: 
     num_cores: 1
     total_mem: 10G
     duration: 0-05:00:00
@@ -190,14 +193,14 @@ These parameters are referenced in the following shell script.
 #### snakemake.sh 
 
 Finally we need to pull it all together with a shell script. This automatically manages the job scheduling 
-for the pipeline and tells the cluster what resources to allocate (no need for anymore slurm directive headers).
+for the pipeline and tells the cluster what resources to allocate (no need for anymore slurm directive headers). 
+All you need to change is the email address here to you own so Snakemake can send you a completion or error 
+report when the pipeline completes or and error is thrown.
 
 ```bash
-snakemake --use-conda --use-envmodules \
---cluster-config ../config/cluster_config.yaml --keep-going \
---cluster "sbatch --qos={cluster.queue} --time={cluster.duration} --account={cluster.account} --job-name={cluster.jobname} --export=ALL --no-requeue --signal=2 --mem={cluster.total_mem} --output=smk.{rule}.%J.out --error=smk.{rule}.%J.err --ntasks={cluster.num_cores}" \
---keep-going \
--j 50 $@ 2> smk-"`date +"%d-%m-%Y"`".log 
+snakemake --cluster-config ../config/cluster_config.yaml \
+--cluster "sbatch --qos={cluster.queue} --time={cluster.duration} --account={cluster.account} --job-name={cluster.jobname} --mem={cluster.total_mem} --ntasks={cluster.num_cores} --output=smk.{rule}.%J.out --error=smk.{rule}.%J.err" \
+-j 50 $@ 2> smk-"`date +"%d-%m-%Y"`".log
 mail -s "Snakemake has finished" camerond@cardiff.ac.uk < smk-"`date +"%d-%m-%Y"`".log
 ```
 
@@ -207,18 +210,167 @@ All code in curly brackets here is referencing parameters we have set in the clu
 
 #### Dry run
 
-Before we run our first pipeline we want to do a dry run using:
+Before we run our first pipeline we want to do a dry run. This has to be run from the directory 
+that contains the `Snakefile`. During the dry run snakekame looks for the Snakefile then makes 
+sure that all the input and output files in all rules are accounted for and checks the code for errors. 
+To run the dry run type the following:
 
 ```bash
 snakemake -np
 ``` 
 
-This has to be run from the directory that contains the `Snakefile`. During the dry run snakekame looks
-for the Snakefile then makes sure that all the input and output files in all rules are accounted for and 
-checks the code for errors. 
+A report is produced listing all the jobs that will be run with the wildcards filled in for
+each separate job. Notice that the last job in the list is the rule `all` job.
 
+```bash
+# Only job stats shown here for brevity. You should see a list of individual jobs too.
+Job stats:
+job               count    min threads    max threads
+--------------  -------  -------------  -------------
+all                   1              1              1
+process_fastqs        4              1              1
+total                 5              1              1
+```
 
 ***
+
+#### Run the job
+
+All we need to do now is run the snakemake script. However, as we need to run the script interactively
+we need to set up a terminal multiplexer to run the script in the background. These are described in 
+more detail [here](). On Hawk `screen` is pre-installed so we can use that.
+
+To set up a new screen session by typing:
+
+```bash
+screen -S smk
+```
+
+This will open a new window which allows you to run your snakemake pipeline in the background. Note
+that this is not the same environment that you were in previously so you need to reactivate the
+smk-tutorial environment:
+
+```bash
+/scratch/$(whoami)/smk-tutorial/workflow/
+```
+
+Now you are set. Run the pipeline by typing:
+
+```bash
+./snakemake.sh
+```
+
+This will send the 4 `process_fastqs` to the appropriate Hawk queue:
+
+```bash
+squeue -u $USER
+JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
+56885128       htc smk_tuto c.c14779 PD       0:00      1 (Priority)
+56885127       htc smk_tuto c.c14779 PD       0:00      1 (Priority)
+56885126       htc smk_tuto c.c14779 PD       0:00      1 (Priority)
+56885125       htc smk_tuto c.c14779 PD       0:00      1 (Priority)
+```
+
+***
+
+#### Output
+
+Snakemake generates several log files. After the all the jobs have run your folder should look like this:
+
+```bash
+ls -1
+envs
+reports
+rules
+scripts
+smk-24-05-2023.log
+smk.process_fastqs.56885322.err
+smk.process_fastqs.56885322.out
+smk.process_fastqs.56885323.err
+smk.process_fastqs.56885323.out
+smk.process_fastqs.56885324.err
+smk.process_fastqs.56885324.out
+smk.process_fastqs.56885325.err
+smk.process_fastqs.56885325.out
+Snakefile
+snakemake.sh
+```
+
+The `smk-24-05-2023.log` this is the general log file for the snakemake process. If you are running 
+a pipeline with thousands of jobs, this log keeps you up to date with the submission and completions 
+statuses of those jobs:
+
+```bash
+Submitted job 4 with external jobid 'Submitted batch job 56885324'.
+
+[Wed May 24 15:38:07 2023]
+rule process_fastqs:
+    input: ../resources/fq/cortex_ExN_1.fastq
+    output: ../results/01_process_fq/cortex_ExN_1.fastq
+    jobid: 1
+    wildcards: sample=cortex_ExN_1
+    resources: tmpdir=/tmp
+
+Submitted job 1 with external jobid 'Submitted batch job 56885325'.
+[Wed May 24 15:39:06 2023]
+Finished job 2.
+1 of 5 steps (20%) done
+[Wed May 24 15:39:06 2023]
+Finished job 3.
+2 of 5 steps (40%) done
+[Wed May 24 15:39:06 2023]
+Finished job 4.
+3 of 5 steps (60%) done
+[Wed May 24 15:39:06 2023]
+Finished job 1.
+4 of 5 steps (80%) done
+Select jobs to execute...
+
+[Wed May 24 15:39:06 2023]
+localrule all:
+    input: ../results/01_process_fq/cortex_ExN_1.fastq, ../results/01_process_fq/cortex_ExN_2.fastq, ../results/01_process_fq/cortex_ExN_3.fastq, ../results/01_process_fq/cortex_ExN_4.fastq
+    jobid: 0
+    resources: tmpdir=/tmp
+
+[Wed May 24 15:39:06 2023]
+Finished job 0.
+5 of 5 steps (100%) done
+```
+
+If any job fails for any reason this is the first thing you would check to try to acertain at 
+which point the pipeline failed. A copy of this log file is sent to your email addresss. 
+
+The individual log files, e.g. `smk.process_fastqs.56885325.out` are the std out and error logs 
+generated by Slurm for each individual `process_fastqs` job. Note that the name contains both the 
+Slurm ID for the job and the rule the job came from so that you can cross-reference these when 
+necessary. 
+
+Lastly, lets quickly check that the ouput files were generated and their content is correct.
+
+```bash
+ls -1 ../results/01_process_fq/ 
+cortex_ExN_1.fastq
+cortex_ExN_2.fastq
+cortex_ExN_3.fastq
+cortex_ExN_4.fastq
+
+cat ../results/01_process_fq/cortex_ExN_*
+cortex_ExN_1
+fq processed.
+cortex_ExN_2
+fq processed.
+cortex_ExN_3
+fq processed.
+cortex_ExN_4
+fq processed.
+```
+
+Great. All we have done here is copy the fastq files from the resources to results directory and 
+added the text `fq processed.` to each file. At this stage, it doesn't really matter what each job 
+is actually doing. It is improtant to understand that  snakemake is not interested in is what each 
+job actually does. It is only interested in tracking files and setting parameters in order to 
+communicate with Hawk, schedule your jobs and run your pipeline efficently. 
+
 
 Move on to [run basic snakemake process]({{ site.baseurl }}/pages/snakemake/run_basic_process.html), or back 
 to [snakemake introduction]({{ site.baseurl }}/snakemake_intro.html).
