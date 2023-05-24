@@ -271,6 +271,15 @@ JOBID PARTITION     NAME     USER ST       TIME  NODES NODELIST(REASON)
 56885125       htc smk_tuto c.c14779 PD       0:00      1 (Priority)
 ```
 
+To detach from the screen type `ctrl+A` simultaneously then type `D`. The `snakemake.sh` 
+script will continue running in the background. To reattach the screen you type:
+
+```bash
+screen -x smk
+```
+
+For a run down of the most common screen commands type `screen --help` or look [here](https://gist.github.com/jctosta/af918e1618682638aa82).
+
 ***
 
 #### Output
@@ -371,6 +380,7 @@ is actually doing. It is improtant to understand that  snakemake is not interest
 job actually does. It is only interested in tracking files and setting parameters in order to 
 communicate with Hawk, schedule your jobs and run your pipeline efficently. 
 
+***
 
 Move on to [run basic snakemake process]({{ site.baseurl }}/pages/snakemake/run_basic_process.html), or back 
 to [snakemake introduction]({{ site.baseurl }}/snakemake_intro.html).
