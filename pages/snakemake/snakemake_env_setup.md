@@ -9,7 +9,7 @@ and it's dependencies. As several dependency packages are downloaded to run snak
 to parallelise the process. All packages and and env info is stored in you scratch directory rather than home 
 to avoid hitting the strict file number limits in the home directory. 
 
-<script src="https://gist.github.com/Dazcam/73cea735c4a4c6aade161b5153d8bdfd"></script>
+<script src="https://gist.github.com/Dazcam/73cea735c4a4c6aade161b5153d8bdfd.js"></script>
 
 ***
 
