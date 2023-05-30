@@ -134,7 +134,7 @@ telling Snakemake to set whatever is stored in the samples directive in the conf
 
 The `expand` function in rule `all` uses this information to create a list containing every possible 
 unique expansion of the code in the first parameter. So expanding `{sample}` in 
-`"../results/01_process_fq/{sample}.fastq"` the following list. 
+`"../results/01_process_fq/{sample}.fastq"` generates the following list. 
 
 ```python
 ["../resources/fq/cortex_ExN_1.fastq", "../resources/fq/cortex_ExN_2.fastq", "../resources/fq/cortex_ExN_3.fastq", "../resources/fq/cortex_ExN_4.fastq"]
@@ -183,9 +183,9 @@ cluster:
   sbatch
     --ntasks={threads}
     --mem={resources.mem_mb}
-    --job-name=smk-{rule}-{wildcards}
-    --output=00LOG/smk-logfiles/{rule}-{wildcards}-%j.out
-    --error=00LOG/smk-logfiles/{rule}-{wildcards}-%j.err
+    --job-name=smk-{rule}
+    --output=../results/00LOG/smk-logfiles/{rule}.%j.out
+    --error=../results/00LOG/smk-logfiles/{rule}.%j.err
     --account=<ADD YOUR ACCOUNT ID HERE>
 
 default-resources:
@@ -202,8 +202,8 @@ later.
 #### snakemake.sh 
 
 Finally we need to pull it all together with a shell script. Snakemake automatically manages the job scheduling 
-for the pipeline and tells the cluster what resources to allocate (no need for anymore slurm directive headers). 
-It references both the `config.yaml` file in the `../config/profile/` directory and the rules specific parameter
+for the pipeline and tells the cluster what resources to allocate (no need for slurm directive headers). 
+It references both the `config.yaml` file in the `../config/profile/` directory and the rule specific parameter
 specifications in each rule (we haven't set any of the latter yet). All you need to change is the email address 
 to you own so Snakemake can send you a completion or error report when the pipeline completes or and error is thrown.
 
@@ -243,7 +243,7 @@ total                 5              1              1
 
 All we need to do now is run the snakemake script. However, as we need to run the script interactively
 we need to set up a terminal multiplexer to run the script in the background. These are described in 
-more detail [here](). On Hawk `screen` is pre-installed so we can use that.
+more detail [here](https://en.wikipedia.org/wiki/Terminal_multiplexer). On Hawk `screen` is pre-installed so we can use that.
 
 To set up a new screen session by typing:
 
@@ -373,7 +373,7 @@ fq processed.
 
 Great. All we have done here is copy the fastq files from the resources to results directory and 
 added the text `fq processed.` to each file. At this stage, it doesn't really matter what each job 
-is actually doing. It is improtant to understand that  snakemake is not interested in is what each 
+is actually doing. It is improtant to understand that snakemake is not interested in what each 
 job actually does. It is only interested in tracking files and setting parameters in order to 
 communicate with Hawk, schedule your jobs and run your pipeline efficently. 
 
