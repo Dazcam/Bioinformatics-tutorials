@@ -11,7 +11,7 @@ To run Snakemake you need 4 basic file types:
 - Snakefile
 - Shell script
 - Config file
-- Cluster config file
+- Cluster config file using a Slurm profile
 
 We will discuss these below.
 
