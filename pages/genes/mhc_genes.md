@@ -1,3 +1,9 @@
+---
+layout: page
+title: Generate gene list that overlap a specific set of genome coordinates
+description: Get a gene list for MHC region
+---
+
 This post describes various methods to generate a gene list from a set of specified
 coordinates. We will focus on the MHC region on chromosome 6 on genome build hg19 
 and hg38.
