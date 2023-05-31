@@ -24,11 +24,9 @@ These are:
 There is also an extended MHC region (xMHC) described in this 
 [Nature review](https://www.nature.com/articles/nrg1489) paper which 
 
-### Ensembl
+***
 
-There are several ways to do this using ensembl.
-
-#### REST API
+### REST API - Ensembl
 
 The function below generates a dataframe containing all MHC regions genes and 
 their associated metadata for either genome build.
