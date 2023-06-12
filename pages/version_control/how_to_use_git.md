@@ -1,3 +1,9 @@
+---
+layout: page
+title: How to use GitHub
+description: Version control with Git inroduction
+---
+
 ### How to use Git
 
 There are several ways to work with and upload code to GitHub:
