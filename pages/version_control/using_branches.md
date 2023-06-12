@@ -1,3 +1,9 @@
+---
+layout: page
+title: Version control with Git
+description: Version control with Git inroduction
+---
+
 ### [Working with branches](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
 - I usually don't bother creating additional branches beyond the local and remote master versions
 - If multiple people are working on the same project, it's nice if they can work on the same files independently without having to merge everything together each time they make a commit
