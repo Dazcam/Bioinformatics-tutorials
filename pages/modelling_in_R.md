@@ -71,3 +71,137 @@ Modelling is an iterative process:
 - **Model evaluation** - assess the model’s performance metrics, examine residual plots, and conduct other EDA-like analyses to understand how well the models work
 
 ***
+
+2 TIDYVERSE 
+
+The desgn priciples of the tidyverse packages is to make software, functions and their syntax intuitive such that their operations are easily understood as the majority of R users
+will not be developers of computer scientists.
+
+- Functions should avoid returning a novel data structure. If the results are conducive to an existing data structure
+
+***
+
+3.1 R modelling fundamentals in baseR
+
+
+```R
+# Chapter 3.1 - Modelling in R using base functions
+
+library(tidyverse)
+data(crickets, package = "modeldata")
+names(crickets)
+
+# Plot the temperature on the x-axis, the chirp rate on the y-axis. The plot
+# elements will be colored differently for each species:
+ggplot(crickets, 
+       aes(x = temp, y = rate, color = species, pch = species, lty = species)) + 
+  # Plot points for each data point and color by species
+  geom_point(size = 2) + 
+  # Show a simple linear model fit created separately for each species:
+  geom_smooth(method = lm, se = FALSE, alpha = 0.5) + 
+  scale_color_brewer(palette = "Paired") +
+  labs(x = "Temperature (C)", y = "Chirp Rate (per minute)")
+
+# Run LM
+# Formula is symbolic outcome variable on LHS (y-axis)
+lm(rate ~ temp, crickets)
+
+# Temperature and time added as separate main effects to the model
+# A main effect is a model term that contains a single predictor variable.
+lm(rate ~ temp + time, crickets) # No time in df though
+
+# As species is non-numeric varaible most functions would choke on this
+# However as species has 2 poss values function assigns 1 and 0
+# To deal with catagorical varaiables dummy (numeric) varaibles required
+# N - 1 Binary columns are required to parse catagorial variables
+lm(rate ~ temp + species, crickets) # No time in df though
+
+# Adding intereatcion terms are done by any of following
+lm(rate ~ temp + species + temp:species, crickets) 
+lm(rate ~ (temp + species) ^ 2, crickets)
+lm(rate ~ temp * species, crickets)
+
+# Matchmatical operations can be used
+# Literal math can also be applied to the predictors using the 
+# identity function I() to convert C to F
+lm(rate ~ log(temp), crickets)
+lm(rate ~ I( (temp * 9/5) + 32 ), crickets)
+
+# Period represents all main effects for all cols 
+# ^ 3 adds all two- and three-variable interactions to the model
+lm(rate ~ (.) ^ 3, crickets)
+
+## Diagnostic plots. -----
+# Residual plots reasonable enough to conduct inferential analysis
+interaction_fit <-  lm(rate ~ (temp + species)^2, data = crickets)
+
+# Place two plots next to one another:
+par(mfrow = c(1, 2))
+
+# Show residuals vs predicted values:
+plot(interaction_fit, which = 1)
+
+# A normal quantile plot on the residuals:
+plot(interaction_fit, which = 2)
+
+## Is interaction term necessary - use ANOVA?
+# Recompute the model without the interaction term and use the anova() method.
+# Fit a reduced model:
+main_effect_fit <-  lm(rate ~ temp + species, data = crickets) 
+
+# Compare the two:
+# p-value of 0.25 implies lack of evidence against the null that interaction 
+# term is not needed by the model. Thus opt for model without interaction.
+# The reassess residual plots to make sure that our theoretical assumptions are valid (they are!)
+anova(main_effect_fit, interaction_fit)
+
+# Inspect the coefficients, SEss, and p-values of each model term
+summary(main_effect_fit)
+
+## CONCLUSION
+
+# The chirp rate for each species increases by 3.6 chirps as the temperature increases 
+# by a single degree. This term shows strong statistical significance as evidenced by the 
+# p-value. The species term has a value of -10.07. This indicates that, across all temperature 
+# values, O. niveus has a chirp rate that is about 10 fewer chirps per minute than O. 
+# exclamation is. Similar to the temperature term, the species effect is associated with a 
+# very small p-value.
+# 
+# The only issue in this analysis is the intercept value. It indicates that at 0° C, there 
+# are negative chirps per minute for both species. While this doesn’t make sense, the data 
+# only go as low as 17.2° C and interpreting the model at 0° C would be an extrapolation. 
+# This would be a bad idea. That being said, the model fit is good within the applicable 
+# range of the temperature values; the conclusions should be limited to the observed 
+# temperature range.
+
+# If we need to predict value no in data use predict
+new_values <- data.frame(species = "O. exclamationis", temp = 15:20)
+predict(main_effect_fit, new_values)
+```
+
+3.2 What does formula does
+
+3.3 Why tidyness is important for modelling
+
+- Many functions in R to do the same thing in different ways need to be careful 
+  incostitancies can be a stubling block
+- Missing data is handled inconsitenatly
+    - General rule is that missing data propagate more missing data; the average of a set of  values with a missing data point is itself missing but not always
+    - Watch for `na.action()` function. Common policies are `na.fail()` and `na.omit()`
+
+The broom package is useful for standardising the structure of R models into dataframes
+ready for plotting:
+
+```R
+library(broom)
+corr_res <- map(mtcars %>% select(-mpg), cor.test, y = mtcars$mpg)
+corr_res %>% 
+  # Convert each to a tidy format; `map_dfr()` stacks the data frames 
+  map_dfr(tidy, .id = "predictor") %>% 
+  ggplot(aes(x = fct_reorder(predictor, estimate))) + 
+  geom_point(aes(y = estimate)) + 
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), width = .1) +
+  labs(x = NULL, y = "Correlation with mpg")
+```
+
+
