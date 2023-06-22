@@ -74,27 +74,62 @@ in the file system.
 
 **Additional directives**
 
-Whilst the above Snakfile would run as is, I'm going to add some additional directves to demostrate some
-of the additional functionality that snakemake offers. So lets look at `align_fastqs` with some added
-accoutrements:
+Whilst the above Snakefile would run as is, I'm going to add some additional directves to it to
+demostrate some of the additional functionality that snakemake offers. Note that most of these 
+parameters are not required, or even relevant, to run this basic process. This purpose here is 
+to demostrate the options snakemake give you not how these affect the sheel script.
+
+Here is the updated `align_fastqs` rule`:
 
 ```python
 rule align_fastqs:
     input:  "../results/01_process_fq/{sample}.fastq"
-    output: "../results/02_align_fastqs/{sample}.bam"
-    log:    "../results/00LOGS/02_align_fastqs/{SAMPLE}.log"
+    output: temp("../results/02_align_fastqs/{sample}.bam")
+    log: "../results/00LOGS/02_align_fastqs/{sample}.log"
     params: config['reference']
-    conda:
-    module: 
+    conda: "../envs/ldsr.yml"
+    envmodules: "libgit2/1.1.0", "R/4.2.0"
+    message: "Running alignment for {wildcards.sample}"
+    priority: 50
     shell:
-            """
-
-            cat {input} > {output}
-            printf "\nThis is now an alignment file.\n" {params} 2> {log} >> {output}
-
-            """
+            "scripts/align_fastqs.sh {input} {output} {params} {wildcards.sample} &> {log}"
 ```
 
+
+Let's explain each new directive one at a time:
+
+- **log** - The file and dirpath for your stderr and / or stdout output
+- **params** -  offers the versitility of passing information to your shell command that is different
+to the contents of `{input}`, `{output}` or the `wildcards` you have set. Sometimes software requires
+file prefixes rather than filenames as input for example.
+- **conda** -  This tells snakemake which virtual environment to use for the execution of this rule.
+Note that you can use different envs for different rules.
+- **envmodules** - Allows you to load modules that may be available in your cluster environment.
+No need to type `module load libgit2/1.1.0` any more.
+- **message** - This prints a message to the general log file whenever a single job is run. I find this
+useful if I have multiple `wildcards` operating in a single rule.
+- **priority** - This takes an integer as input and allows fine control ove which rules have higher queueing
+priority. This is very useful when running large jobs with lots of large intermediate temporary files that
+can cause you to overshoot your memory capacity on `sratch`.
+- **temp()** - Indicates to snakemake which files are temporary. These will be deleted once every rules that
+needs to use them has finshed using them. (Note: that these files shouldn't be passed to rule all.)
+- **{wildcards.sample}** - Notice that if we want to use `{sample}` wildcard in the `message` directive or within
+the shell command we need to precede it with {.wildcards}. TODO: WHY?  
+- **align_fastqs.sh** - When you have a large chunk of code to process it's often cleaner to use a script.
+
+    ```bash
+    #!/bin/bash
+    cat $1 > $2
+    printf "\nThis is now an alignment file using reference $3 for sample $4.\n" >> $2
+    ```
+
+Note that this is very much the same as the bash code in the original version of the `align_fastqs`
+rule with the reference and wildcards positional parameter inputs added. (More ore info on bash positional
+paramters can be found [here](https://en.wikibooks.org/wiki/Bash_Shell_Scripting/Positional_Parameters)).
+
+***
+
+Using R and Python
 
 
 TODO: Add page for details on make, add shell script and rule specific slurm params
