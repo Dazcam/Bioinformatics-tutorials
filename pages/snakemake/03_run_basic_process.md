@@ -379,5 +379,4 @@ communicate with Hawk, schedule your jobs and run your pipeline efficently.
 
 ***
 
-Move on to [Add a 2nd rule and additional params]({{ site.baseurl }}/pages/snakemake/04_rule2_add_params.html), or back 
-to [snakemake environment setup]({{ site.baseurl }}/02_snakemake_env_setup.html).
+Move on to [Run basic process]({{ site.baseurl }}/pages/snakemake/03_run_basic_processs.html), or back to [Run basic process]({{ site.baseurl }}/pages/snakemake/03_run_basic_processs.html).
