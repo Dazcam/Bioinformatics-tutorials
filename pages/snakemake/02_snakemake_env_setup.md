@@ -21,5 +21,5 @@ a file called `repo_setup.sh`, then run `./repo_setup /scratch/$whoami/snakemake
 
 ***
 
-Move on to [run basic snakemake process]({{ site.baseurl }}/pages/snakemake/run_basic_process.html), or back 
-to [snakemake introduction]({{ site.baseurl }}/snakemake_intro.html).
+Move on to [run basic snakemake process]({{ site.baseurl }}/pages/snakemake/03_run_basic_process.html), or back 
+to [snakemake introduction]({{ site.baseurl }}/01_snakemake_intro.html).
