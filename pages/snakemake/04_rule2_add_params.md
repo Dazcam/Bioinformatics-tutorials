@@ -97,4 +97,6 @@ rule align_fastqs:
 
 TODO: Add page for details on make, add shell script and rule specific slurm params
 
-****
+***
+
+Move on to [snakemake environment setup]({{ site.baseurl }}/pages/snakemake/02_snakemake_env_setup.html), or back to [Run basic process]({{ site.baseurl }}/index.html).
