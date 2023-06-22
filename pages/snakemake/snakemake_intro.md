@@ -23,48 +23,27 @@ in a human readable manner.
 - **File creation is tracked**: 
     - By completion: If a process crashes unexpectedly snakemake will automatically delete corrupted / incomplete files
     - By date: so if you change a file at stage 2 of the process snakemake will infom you to rerun all subsequent processes
+- **Pipeline management and modularisation**: Promotes the modularisation of bioinformatics processes into digestable chunks
 
 ***
 
 ### Benefits of using snakemake on a computer cluster
 
 - **Makes parellisation simple**: Manages scheduling of job submission to [cluster](http://snakemake.readthedocs.io/en/stable/executable.html#cluster-execution) (or to the [cloud](http://snakemake.readthedocs.io/en/stable/executable.html#cloud-support))
-- **Allows you to easily assign specific resources to each subprocess**: pe smp and h_vmem can be specified as params in the Snakefile, in a [cluster config file](http://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html#cluster-configuration) or ...
-    - cluster config files allow specification of default parameters
-- Can be used to execute shell commands or python code blocks (in theory also [R code blocks](http://snakemake.readthedocs.io/en/stable/snakefiles/utils.html#scripting-with-r))   
-- Inputs, outputs, and [parameters](http://snakemake.readthedocs.io/en/stable/tutorial/advanced.html#step-4-rule-parameters) can be specified for each rule
-- Need to include a "master rule" (usually called ```all```) which requires all of your desired outputs as input
-- Intermediate files can be [automatically removed](http://snakemake.readthedocs.io/en/stable/tutorial/advanced.html#step-6-temporary-and-protected-files) once they are no longer needed
-- Supports [benchmarking](http://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#benchmarking) to report CPU and memory usage and [Logging](http://snakemake.readthedocs.io/en/stable/tutorial/advanced.html#step-5-logging) of messages/errors
-- Supports [config files](http://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html) to abstract details of pipeline from inputs and outputs
-    - [Input functions](https://snakemake.readthedocs.io/en/stable/tutorial/advanced.html#step-3-input-functions) allow config file entries to be accessed by wildcard values
-- Workflows can also be further abstracted by:
-    - using ```include``` statements to import [python code](http://snakemake.readthedocs.io/en/stable/project_info/faq.html#i-want-to-import-some-helper-functions-from-another-python-file-is-that-possible)
-    - using the ```script``` command to [execute a python script](http://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#using-custom-scripts), giving it access to variables defined in the Snakefile
-    - using ```include``` statements to import rules from [other Snakefiles](http://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#includes)
-    - creating [sub-workflows](http://snakemake.readthedocs.io/en/stable/snakefiles/modularization.html#sub-workflows)
-- [Conda environments](http://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#integrated-package-management) can automatically be set up for each step of the analysis
-- Many popular tools have [prewritten wrappers](https://snakemake-wrappers.readthedocs.io/en/stable) that automatically create the necessary environment and run the tools using the specified inputs, outputs, and paramaters
-- There is also a [repository](https://bitbucket.org/johanneskoester/snakemake-workflows) of example rules and workflows for NGS analyses
-
-### Getting started with Snakemake
-- Snakemake [documentation](https://snakemake.readthedocs.io/en/stable) and [tutorial](https://snakemake.readthedocs.io/en/stable/tutorial/tutorial.html)
-- Examples of:
-    - a [Snakefile](https://github.com/hobrien/RNAseqTools/blob/master/Benchmarking/Snakefile)
-    - including [additional Snakefiles](https://github.com/hobrien/RNAseqTools/blob/master/Benchmarking/bamQC)
-    - a [config file](https://github.com/hobrien/RNAseqTools/blob/master/Benchmarking/config.yaml)
-    - [cluster configuration](https://github.com/hobrien/RNAseqTools/blob/master/Benchmarking/cluster_config.yaml)
-    - a [bash script](https://github.com/hobrien/RNAseqTools/blob/master/Benchmarking/snakemake.sh) for invoking snakemake on the cluster, including email notification upon completion
-
+- **Easily assign default, and / or subprocess specific, resources**: No need for multiple shell scripts or SGE / SLURM headers i.e. parameters like `pe smp` and `h_vmem` can be specified in a [snakemake profile](https://snakemake.readthedocs.io/en/stable/executing/cli.html#profiles)
+- **Supports all languages**: Any type of script can be run, and shell and python commands can be executed directly
+- **Intermediate files can be [automatically removed](http://snakemake.readthedocs.io/en/stable/tutorial/advanced.html#step-6-temporary-and-protected-files)**: temporary directory / file removal is simple 
+- **Supports [benchmarking](http://snakemake.readthedocs.io/en/stable/tutorial/additional_features.html#benchmarking)**: For example, to report CPU and memory usage
+- **Supports [logging](http://snakemake.readthedocs.io/en/stable/tutorial/advanced.html#step-5-logging)**: control messages/errors
+- **Supports [config files](http://snakemake.readthedocs.io/en/stable/snakefiles/configuration.html)** to abstract project specific details like filenames from the pipeline to promote code resuability and portability
+  **Supports use of [environment modules](https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#using-environment-modules)**: Environment modules on your local cluster can be pre-loaded in rule specific manner
+- **Supports [Conda environments and package management](http://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#integrated-package-management)**
+- **Supports [containers](https://snakemake.readthedocs.io/en/stable/snakefiles/deployment.html#running-jobs-in-containers)**
+- **Many [pre-written wrappers](https://snakemake-wrappers.readthedocs.io/en/stable/) for common bioinformatics tasks**: No need to reinvent the wheel
 
 ### Alternatives to Snakemake
 
 [Nextflow](https://www.nextflow.io)
-
-### Links
-
-- This is all covered in detail here:
-    - Wilson, et al. (2017). Good enough practices in scientific computing. [PLoS Computational Biology, 13(6), e1005510](http://doi.org/10.1371/journal.pcbi.1005510)
 
 ***
 
