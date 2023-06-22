@@ -42,11 +42,11 @@ rule align_fastqs:
 ```
 
 When adding a new rule the most important thing to consider is the flow of files between
-the `input` and `output` directives of each rule and the `input` directive the master rule, 
+the `input` and `output` directives of each rule and the `input` directive of the master rule, 
 rule `all`. Notice that the `input` to the `align_fastqs` rule is the `output` produced by
 the `process_fastqs` rule. As there is no `expand` function around in the input files in 
 `align_fastqs` the files will be processed through `align_fastqs` one by one, again there
-will be 5 instances of `align_fastqs` run.
+will be 4 instances of `align_fastqs` run.
 
 The next thing to notice is that we have changed the input of rule `all` to expect the
 output files from `align_fastqs` instead of `process_fastqs`. This means that snakemake
@@ -95,7 +95,11 @@ rule align_fastqs:
             """
 ```
 
+
+
 TODO: Add page for details on make, add shell script and rule specific slurm params
+
+
 
 ***
 
