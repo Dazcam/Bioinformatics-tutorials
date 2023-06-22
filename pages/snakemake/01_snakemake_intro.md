@@ -47,7 +47,7 @@ in a human readable manner.
 
 ***
 
-Move on to [snakemake environment setup]({{ site.baseurl }}/pages/snakemake/snakemake_env_setup.html), or back 
+Move on to [snakemake environment setup]({{ site.baseurl }}/pages/snakemake/02_snakemake_env_setup.html), or back 
 to [index page]({{ site.baseurl }}/index.html).
 
 
