@@ -65,8 +65,19 @@ how to use your package effectively. `roxygen2` allows you to add a header to
 a function to explain what the function does. When you then run the `build` 
 function help files are generated based on the content of function headers. 
 
-- 1st paragraph - Title no longer than a sentenc
-- 2md paragraph - Treated as a brief description of the function
-- 3rd paragpraph - Details section where more inf
+- **1st paragraph**:Title no longer than a sentenc
+- **2nd paragraph**: Treated as a brief description of the function
+- **3rd paragpraph**: Provide detail on params and functionali
+- **`@param`**: Tag for function argument. Useful to mention object type here.
+- **`@import`**: Tag for extern packages that need to be imported for function
+  to work properly.
+- **`@importFrom`**: If you want to import a single function from a package.
+- **`@export`**: Functions that are visible to the end user. Utility functions
+  used by your package are not usually not exported directly. Exported
+  functions are automatically added to the `NAMESPACE` file after using `build()`.
+- **`@returns`**:
+- **`@examples`**: Example code to demostrate how the function should be used by
+  the user. These examples are checked for errors when `check` is run.
 
-- R directory
+
+
