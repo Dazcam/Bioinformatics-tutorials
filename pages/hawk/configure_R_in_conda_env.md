@@ -1,4 +1,8 @@
-## Configuring R in a Conda environment on Hawk
+---
+layout: page
+title: Configuring R in a Conda environment on HAWK
+description: Configuring R in a Conda environment on HAWK
+---
 
 This can be a bit of a minefield. Running R and many of it's packages is 
 fairly straightforward on Hawk using the base version of R on the system 
@@ -37,7 +41,14 @@ one of the packages resolve a conflict with a package you're trying to install.
 In some cases, it is possible to install a local version but having two
 versions of the same package that R can access can cause `segmentation faults`
 which happened to me recently trying to run edgeR's `cpm()` function.
-`rcurl` is another package that causes issues. 
+
+
+```R
+ *** caught segfault ***
+address 0x2aff0b8aeff0, cause 'memory not mapped'
+```
+
+[`rcurl`](https://github.com/jeroen/curl/issues/129#issuecomment-339730996) is another package that causes issues. 
 
 I hit skids when trying to download a small package I developed called 
 `tdespec`. I wanted to test it in a conda environment and with snakemake
