@@ -1,4 +1,8 @@
-
+---
+layout: page
+title: Be aware of HAWK environment settings 
+description: Be aware of HAWK environment settings 
+---
 
 Something to be aware of in Hawk is that Conda, python and R versions
 change depending on the environment you are in. This can be important
