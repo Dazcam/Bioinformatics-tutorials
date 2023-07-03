@@ -22,7 +22,19 @@ Perhaps most importantly tmux allows you to return to sessions in your home fold
 have disconnected as it can keep multiple sessions running in the background. 
 
 + [Tmux crash course](https://robots.thoughtbot.com/a-tmux-crash-course)
-+ [Tmux shortcuts](https://gist.github.com/MohamedAlaa/2961058) 
++ [Tmux shortcuts](https://gist.github.com/MohamedAlaa/2961058)
+
+### Screen - alternative to tmux
+
+Gotch with screen 
+
+Be careful when using the same screen for long periods. For convienince purposes it's 
+easy to just use the same screen for all snakemake purposes. However, bear in mind that
+the screen is a snapshot of your global environment at the time you first created it.
+
+So if, for example, you alter your `.myenv` or `.bashprofile` file, to change the 
+default version of R you are using this will not be altered in historical global
+environments.
 
 ***
 
