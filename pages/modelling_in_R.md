@@ -204,4 +204,119 @@ corr_res %>%
   labs(x = NULL, y = "Correlation with mpg")
 ```
 
+3.4 Combining Base R models and the tidyverse
+
+`dplyr::group_nest()` fits separte models for each cricket species and the
+`data` col containe the rate and temp cols fro crickets in a list col. 
+`purrr:map` is used to create individual models for each species.
+
+```R
+model_by_species <- 
+  crickets %>%
+  group_nest(species) %>%
+  mutate(model = purrr::map(data, ~ lm(rate ~ temp, data = .x)))
+model_by_species
+```
+
+`brrom::tidy()` is used to convert the coeffcients of the models into a
+consistent data frame format so that they can be unnested:
+
+```R
+model_by_species %>% 
+  mutate(coef = map(model, tidy)) %>% 
+  select(species, coef) %>% 
+  unnest(cols = c(coef))
+#> # A tibble: 4 × 6
+#>   species          term        estimate std.error statistic  p.value
+#>   <fct>            <chr>          <dbl>     <dbl>     <dbl>    <dbl>
+#> 1 O. exclamationis (Intercept)   -11.0      4.77      -2.32 3.90e- 2
+#> 2 O. exclamationis temp            3.75     0.184     20.4  1.10e-10
+#> 3 O. niveus        (Intercept)   -15.4      2.35      -6.56 9.07e- 6
+#> 4 O. niveus        temp            3.52     0.105     33.6  1.57e-15
+```
+
+3.5 THE TIDYMODELS METAPACKAGE
+
+The tidymodels package is a suite of packges for data modelling following a 
+similar design to tidyverse.
+
+***
+
+4 The Ames Housing Data
+
+GOAL: predict the sale price of a house based on other information we have, 
+such as its characteristics and location.
+
+```R
+data(ames, package = "modeldata")
+dim(ames)
+library(tidymodels); theme_set(theme_bw()) # Theme set for ggplot2
+
+ggplot(ames, aes(x = Sale_Price)) + 
+  geom_histogram(bins = 50, col= "white")
+```
+
+- Data right skewed/ Median sale price was $160K / max sale price $755K
+- Strong argument can be made that the price for modeling this outcome should be log-transformed.
+- Advantages:
+    - No houses would be predicted with negative sale prices
+    - Errors in predicting expensive houses will not have an undue influence on the model.
+    - From a statistical perspective, a logarithmic transform may also stabilize the variance in a way that makes inference more legitimate.
+- Diadvantages:
+    - Mostly relate to interpretation of model results
+    - Units of the model coefficients might be more difficult to interpret, as will measures of performance
+    - For example, the root mean squared error (RMSE) is a common performance metric used in regression models. It uses the difference between the observed and predicted values in its calculations. If the sale price is on the log scale, these differences (i.e., the residuals) are also on the log scale. It can be difficult to understand the quality of a model whose RMSE is 0.15 on such a log scale.
+
+Regardless, we will use the log-transformed data.
+ 
+```R
+ggplot(ames, aes(x = Sale_Price)) + 
+  geom_histogram(bins = 50, col= "white") +
+  scale_x_log10()
+ames <- ames %>% mutate(Sale_Price = log10(Sale_Price))
+```
+
+Runs through some exploratory data analysis on the spatial data and spots some potential
+outliers / errors in the data.
+
+Exploratory data analysis is critical prior to beginning any modelling as data characteristics
+will shape about how the data should be processed and modeled. Some basic preliminary 
+questions regarding this data would be:
+
+- Is there anything odd or noticeable about the distributions of the individual predictors?
+- Is there much skewness or any pathological distributions?
+- Are there high correlations between predictors? For example, there are multiple predictors related to house size. Are some redundant?
+- Are there associations between predictors and the outcomes?
+
+5. Spending our data
+
+Several steps to creating a useful model:
+
+- Parameter estimation
+- Model selection and tuning
+- Performance assessment
+
+At start of aproject there is an infinite pool of options, which we can refere to as the data budget. 
+
+**Data spending**, how datya shiuld be applied to every task, is an important first consideration when
+modelling as it relates to empirical validation.
+
+When loads of data are available, a smart strat is to alloc specific subsets of data to 
+different tasks (rather than use all data)to model something like parameter estimation. 
+One strat when data and predictors are abundant is to spend specific subset of data to
+determine which predictors are informative, before even considering parameter estimation. 
+A solid methodlogy for data spending is important.
+
+This chapter demonstrates the basics of splitting (i.e., creating a data budget) for our initial pool of samples for different purposes.
+
+5.1 COMMON METHODS FOR SPLITTING DATA
+
+Primray approach for empirical model validation is to split data into distinct sets:
+
+- Training data: Majority of data used to develop and optimize the model and are a sandbox for
+  model building where different models can be fit, feature engineering strategies are investigated etc.
+- Test data: Tests efficacy of model(s) we have chosen. Critical to run test set only once otherwise it
+  becomes part of the modelling process
+
+At spliiting the data
 
