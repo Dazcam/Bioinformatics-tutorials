@@ -311,12 +311,88 @@ This chapter demonstrates the basics of splitting (i.e., creating a data budget)
 
 5.1 COMMON METHODS FOR SPLITTING DATA
 
-Primray approach for empirical model validation is to split data into distinct sets:
+Primary approach for empirical model validation is to split data into distinct sets:
 
-- Training data: Majority of data used to develop and optimize the model and are a sandbox for
+- **Training data**: Majority of data used to develop and optimize the model and are a sandbox for
   model building where different models can be fit, feature engineering strategies are investigated etc.
-- Test data: Tests efficacy of model(s) we have chosen. Critical to run test set only once otherwise it
+- **Test data**: Tests efficacy of model(s) we have chosen. Critical to run test set only once otherwise it
   becomes part of the modelling process
 
-At spliiting the data
+The proportion of a data allocated in splitting is important:
 
+- **Too little in training set**: hampers the model’s ability to find appropriate parameter estimates
+- **Too little in test set**: lowers the quality of the performance estimates
+
+Be aware that some in stats community do not use test sets and believe all data should be used for param estimation.
+
+The `rsample` package can be used to split data. `initial_split()` takes a df as input and
+splits the data 80 / 20%, creating and rsplit object. To get the indiviudal dataset we use
+`training()` and `testing()`. 
+
+```R
+library(tidymodels)
+tidymodels_prefer()
+set.seed(501) # So results can be reproduced later
+
+# Save the split information for an 80/20 split of the data
+ames_split <- initial_split(ames, prop = 0.80)
+
+# Pull out individual datasets
+ames_train <- training(ames_split)
+ames_test  <-  testing(ames_split)
+
+# run a stratified split
+set.seed(502)
+ames_split <- initial_split(ames, prop = 0.80, strata = Sale_Price)
+ames_train <- training(ames_split)
+
+```
+
+Exceptions to simple random samples:
+
+- **Class imbalance**: if one one class occurs much less frequently than another as infrequent samples coul dbe disproportionately alloc into the training or test set. This sometimes occurs with skewed data.
+    - Stratified sampling: can be used as alternative in these cases as split is conducted seprately within each class
+- **Time-series data**: Common to use the most recent data as the test set. The function `initial_time_split()` can be used to split time series data.
+
+5.3 Multilevel data
+
+In some data set experimental units are independent of one another, but this is not always the case:
+
+- Longitudindal data: the same independent experimental unit can be measured over multiple time points
+- Repeated measure design: batch of a manufactured product could be the independent experimental unit
+
+In these situations, the data set will have multiple rows per experimental unit. Simple resampling across rows would lead to some data within an experimental unit being in the training set and others in the test set. Data splitting should occur at the independent experimental unit level of the data. 
+
+5.4 OTHER CONSIDERATIONS FOR A DATA BUDGET
+
+- Quarantine the test set from any model building activities
+- Watch out for information leakage i.e. when data outside of the training set are used in the modeling process
+- Critical that the test set continues to mirror what the model would encounter in the wild (be carefull when subsampling)
+
+***
+
+6 Fitting Models with parsnip
+
+6.1 CREATE A MODEL
+
+A variety of methods can be used to estimate the model parameters:
+
+- Ordinary linear regression: uses the traditional method of least squares to solve for the model parameters.
+- Regularized linear regression: adds a penalty to the least squares method to encourage simplicity by removing predictors and/or shrinking their coefficients towards zero. This can be executed using Bayesian or non-Bayesian techniques.
+
+For tidymodels, the approach to specifying a model is intended to be more unified:
+
+- Specify the type of model based on its mathematical structure (e.g., linear regression, random forest, KNN, etc).
+- Specify the engine for fitting the model. Most often this reflects the software package that should be used, like Stan or glmnet. 
+- When required, declare the mode of the model. The mode reflects the type of prediction outcome. For numeric outcomes, the mode is regression; for qualitative outcomes, it is classification.
+
+For the 3 cases above:
+
+```R
+library(tidymodels)
+tidymodels_prefer()
+
+linear_reg() %>% set_engine("lm")
+linear_reg() %>% set_engine("glmnet") 
+linear_reg() %>% set_engine("stan")
+```
