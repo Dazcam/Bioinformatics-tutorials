@@ -1,4 +1,8 @@
-# Building a container for tdespec
+---
+layout: page
+title: Building a container for tdespec
+description: Building a container for tdespec
+---
 
 **NOTE**: This method may need updating as it appears that singularity is changing to 
 apptainer. On Hawk some of the commands below (such as the remote login and pull
