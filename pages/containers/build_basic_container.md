@@ -83,9 +83,10 @@ singularity exec tdespec_latest.sif R
 
 ## Additional links:
 
-[ARCCA course](https://arcca.github.io/intro_singularity/index.html)
-[HSF course](https://hsf-training.github.io/hsf-training-singularity-webpage/01-introduction/index.html)
-[Pawsey course](https://pawseysc.github.io/singularity-containers/index.html)
+- [Snakemake: running-jobs-in-containers](https://snakemake.readthedocs.io/en/master/snakefiles/deployment.html#running-jobs-in-containers)
+- [ARCCA course](https://arcca.github.io/intro_singularity/index.html)
+- [HSF course](https://hsf-training.github.io/hsf-training-singularity-webpage/01-introduction/index.html)
+- [Pawsey course](https://pawseysc.github.io/singularity-containers/index.html)
 
 ***
 
