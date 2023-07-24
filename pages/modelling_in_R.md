@@ -392,7 +392,92 @@ For the 3 cases above:
 library(tidymodels)
 tidymodels_prefer()
 
-linear_reg() %>% set_engine("lm")
-linear_reg() %>% set_engine("glmnet") 
-linear_reg() %>% set_engine("stan")
+# Translate provides details on how parsnip converts the user’s code to the package’s syntax:
+linear_reg() %>% set_engine("lm") %>% translate()
+linear_reg() %>% set_engine("glmnet") %>% translate()
+linear_reg() %>% set_engine("stan") %>% translate()
 ```
+
+Let's walk through how to predict the sale price of houses in the Ames data as a function of Longitude and
+Latitude:
+
+```R
+library(tidymodels)
+tidymodels_prefer()
+set.seed(501) 
+ames_split <- initial_split(ames, prop = 0.80)
+ames_train <- training(ames_split)
+ames_test  <-  testing(ames_split)
+
+lm_model <- 
+  linear_reg() %>% 
+  set_engine("lm")
+
+lm_form_fit <- 
+  lm_model %>% 
+  # Recall that Sale_Price has been pre-logged
+  fit(Sale_Price ~ Longitude + Latitude, data = ames_train)
+
+lm_xy_fit <- 
+  lm_model %>% 
+  fit_xy(
+    x = ames_train %>% select(Longitude, Latitude),
+    y = ames_train %>% pull(Sale_Price)
+  )
+
+lm_form_fit
+lm_xy_fit
+```
+
+- In an effort to make argument specification less painful, parsnip standarises argument names within and between packages.
+- To understand how the parsnip argument names map to the original names, use the help file for the model of `translate():
+
+  ```R
+  rand_forest(trees = 1000, min_n = 5) %>% 
+  set_engine("ranger") %>% 
+  set_mode("regression") %>% 
+  translate()
+  ```
+
+6.2 USE THE MODEL RESULTS
+
+- To extract the fitted model use `lm_form_fit %>% extract_fit_engine()`.
+- The `broom` package can convert many types of model objects to a tidy structure `tidy(lm_form_fit)`
+
+6.3 MAKE PREDICTIONS
+
+```R
+ames_test_small <- ames_test %>% slice(1:5)
+predict(lm_form_fit, new_data = ames_test_small)
+
+ames_test_small %>% 
+  select(Sale_Price) %>% 
+  bind_cols(predict(lm_form_fit, ames_test_small)) %>% 
+  # Add 95% prediction intervals to the results:
+  bind_cols(predict(lm_form_fit, ames_test_small, type = "pred_int")) 
+```
+
+7 A MODEL WORKFLOW
+
+Code required for moving forward:
+
+```R
+library(tidymodels)
+data(ames)
+
+ames <- mutate(ames, Sale_Price = log10(Sale_Price))
+
+set.seed(502)
+ames_split <- initial_split(ames, prop = 0.80, strata = Sale_Price)
+ames_train <- training(ames_split)
+ames_test  <-  testing(ames_split)
+
+lm_model <- linear_reg() %>% set_engine("lm")
+
+lm_wflow <- 
+  workflow() %>% 
+  add_model(lm_model) %>% 
+  add_variables(outcome = Sale_Price, predictors = c(Longitude, Latitude))
+```
+
+
