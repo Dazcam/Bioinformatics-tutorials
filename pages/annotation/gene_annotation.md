@@ -13,12 +13,18 @@ from HGNC to Entrez IDs), or to add gene coordinates to them.
 require(biomaRt)
 require(tidyverse)
 
-## Create lookup table 
-mart <- useMart('ENSEMBL_MART_ENSEMBL')
-mart <- useDataset('hsapiens_gene_ensembl', mart)
+# https://www.biostars.org/p/430015/
+# https://www.biostars.org/p/453725/
 
-annot_lookup <- getBM(
-  mart = mart,
+## Create lookup table - hg38
+mart_hg38 <- useMart('ENSEMBL_MART_ENSEMBL')
+mart_hg38 <- useDataset('hsapiens_gene_ensembl', mart_hg38)
+
+attribs <- as_tibble(listAttributes(mart_hg38))
+
+annot_lookup_hg38 <- as_tibble(
+  getBM(
+  mart = mart_hg38,
   attributes = c(
     'chromosome_name', 
     'start_position', 
@@ -26,32 +32,56 @@ annot_lookup <- getBM(
     'gene_biotype', 
     'hgnc_symbol',
     'entrezgene_id', 
-    'ensembl_gene_id'),
-  uniqueRows = TRUE)
+    'ensembl_gene_id',
+    'strand'),
+  uniqueRows = TRUE))
 
-as_tibble(annot_lookup)
+## Create lookup table - hg19
+mart_hg19 <- useMart('ENSEMBL_MART_ENSEMBL', host = 'https://grch37.ensembl.org')
+mart_hg19 <- useDataset('hsapiens_gene_ensembl', mart_hg19)
 
-# A tibble: 75,739 × 7
-#   hgnc_symbol ensembl_gene_id gene_biotype   entrezgene_id chromosome_name start_position end_position
-#   <chr>       <chr>           <chr>                  <int> <chr>                    <int>        <int>
-# 1 MT-TF       ENSG00000210049 Mt_tRNA                   NA MT                         577          647
-# 2 MT-RNR1     ENSG00000211459 Mt_rRNA                   NA MT                         648         1601
-# 3 MT-TV       ENSG00000210077 Mt_tRNA                   NA MT                        1602         1670
-# 4 MT-RNR2     ENSG00000210082 Mt_rRNA                   NA MT                        1671         3229
-# 5 MT-TL1      ENSG00000209082 Mt_tRNA                   NA MT                        3230         3304
-# 6 MT-ND1      ENSG00000198888 protein_coding          4535 MT                        3307         4262
-# 7 MT-TI       ENSG00000210100 Mt_tRNA                   NA MT                        4263         4331
-# 8 MT-TQ       ENSG00000210107 Mt_tRNA                   NA MT                        4329         4400
-# 9 MT-TM       ENSG00000210112 Mt_tRNA                   NA MT                        4402         4469
-#10 MT-ND2      ENSG00000198763 protein_coding          4536 MT                        4470         5511
+annot_lookup_hg19 <- as_tibble(
+  getBM(
+    mart = mart_hg19,
+    attributes = c(
+      'chromosome_name', 
+      'start_position', 
+      'end_position',       
+      'gene_biotype', 
+      'hgnc_symbol',
+      'entrezgene_id', 
+      'ensembl_gene_id',
+      'strand'),
+    uniqueRows = TRUE))
+
+annot_lookup_hg38 %>% print(n = 3)
+#   A tibble: 75,739 × 8
+#   chromosome_name start_position end_position gene_biotype hgnc_symbol
+#   <chr>                    <int>        <int> <chr>        <chr>      
+# 1 MT                         577          647 Mt_tRNA      MT-TF      
+# 2 MT                         648         1601 Mt_rRNA      MT-RNR1    
+# 3 MT                        1602         1670 Mt_tRNA      MT-TV      
+# ℹ 75,736 more rows
+# ℹ 3 more variables: entrezgene_id <int>, ensembl_gene_id <chr>, strand <int>
+
+
+annot_lookup_hg19 %>% print(n = 3)
+#  A tibble: 67,198 × 7
+#   chromosome_name start_position end_position gene_biotype   hgnc_symbol
+#   <chr>                    <int>        <int> <chr>          <chr>      
+# 1 HG991_PATCH           66119285     66465398 protein_coding "SLC25A26" 
+# 2 13                    23551994     23552136 miRNA          ""         
+# 3 13                    23708313     23708703 pseudogene     "HMGA1P6"  
+# ℹ 67,195 more rows
+# ℹ 2 more variables: entrezgene_id <int>, ensembl_gene_id <chr>
+
 ```
 
-So we pull down 75,737 'genes' in total. So to demonstrate how to get annotate a gene list of entrez IDs we can 
-take a random sample of rows from the lookup table.
+So we pull down 75,739 'genes' in total for hg38 and 67,195 'genes' for hg19. So to demonstrate how to get annotate a gene list of entrez IDs we can take a random sample of rows from the lookup table.
 
 ```R
 set.seed(123) 
-entrez_genes <- annot_lookup %>%
+entrez_genes <- annot_lookup_hg38 %>%
   slice_sample(n = 10)
 
 #    hgnc_symbol ensembl_gene_id                     gene_biotype entrezgene_id     chromosome_name start_position end_position
