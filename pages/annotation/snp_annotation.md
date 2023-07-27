@@ -1,3 +1,8 @@
+---
+layout: page
+title: Genome annotation
+description: SNP annotation
+---
 
 ## Bioconductor
 Annotating SNPs in R can be done using the BSgenome and SNPlocs packages.
