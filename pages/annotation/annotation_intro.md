@@ -1,3 +1,8 @@
+---
+layout: page
+title: Genome annotation
+description: Genome annotation introduction
+---
 
 Two key terms are a `genome assembly` and genome `annotation`.
 
