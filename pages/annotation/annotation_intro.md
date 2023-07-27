@@ -15,11 +15,13 @@ observed across available individual genomes. The resulting reference genome is 
 synthetic hybrid that serves as archetype but whose sequence is not actually observed wholesale 
 in any particular individual genome. Genome assemblies for model organisms, such as human, 
 are derived from multiple individuals, while some for some less well studies species 
-reference builds are derived from a single individual. Paraphrased from: 
+reference builds are derived from a single individual. Sources: 
 [here](https://www.ensembl.org/info/genome/genebuild/assembly.html) and 
 [here](https://gatk.broadinstitute.org/hc/en-us/articles/360035891071).
 
-Genome assembly data is being collected daily and, from time to time, updates are publically released.
+Genome assembly data is curated by the 
+[Genome Reference Consortium](https://www.ncbi.nlm.nih.gov/grc) and occasionally updates are 
+publically released.
 
 - `Major assembly updates`: are released infrequently and may shift the coordinates of certain loci
   based on new information.
@@ -39,6 +41,7 @@ are some other identifiers you should be aware of:
 - `chrU_`: unplaced sequences (chromosome of origin unknown)
 - `_alt`: an alternate contig (patch) of the primary assembly (sometimes very similar to primary sequence, sometimes highly divergent)
 
+Genome assemblies are represented in various genome browsers and databases including Ensembl, NCBI and UCSC Genome Browser.
 
 ## Genome Annotation
 
@@ -51,6 +54,7 @@ international grops that provide genome annotation / browser services:
 - NCBI
 - UCSC
 
+[MANE paper](https://www.nature.com/articles/s41586-022-04558-8)
 
 This information is 
 stored in, and can be extracted from, large databases fairly trivially. 
