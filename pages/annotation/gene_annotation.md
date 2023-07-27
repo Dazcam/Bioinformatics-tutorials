@@ -1,3 +1,8 @@
+---
+layout: page
+title: Genome annotation
+description: Gene annotation
+---
 
 There are many tools we can use annotate genes. 
 
