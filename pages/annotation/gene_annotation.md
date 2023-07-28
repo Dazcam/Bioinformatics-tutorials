@@ -218,4 +218,24 @@ So we have:
 - 
 
 
+## Annotation Hub
+
+```R
+library(AnnotationHub)
+require("ensembldb")
+
+hub <- AnnotationHub()
+query(hub, c("homo","ensdb"))
+
+ensdb <- hub[["AH109606"]]
+
+keytypes(ensdb)
+columns(ensdb)
+head(keys(ensdb, "GENEID"))
+head(keys(ensdb, "ENTREZID"))
+test <- select(ensdb, keys = keys(ensdb, "GENEID"), columns = c("SYMBOL", "GENEID", "ENTREZID", ))
+
+test
+```
+
 
