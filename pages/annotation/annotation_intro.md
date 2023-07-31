@@ -165,10 +165,53 @@ Negative:
 [Generating and using Ensembl based annotation packages](https://www.bioconductor.org/packages/devel/bioc/vignettes/ensembldb/inst/doc/ensembldb.html)
 
 
-TODO:
+----
 
-Get container working
-Update snakemake tutorial
-Make tweaks to paper
-Update gene annotation tutorial
-Read papers
+[Haplotypes and patches](https://www.ensembl.org/info/genome/genebuild/haplotypes_patches.html)
+[GRC terminology](https://www.ncbi.nlm.nih.gov/grc/help/definitions/)
+[NCBI assembly primer](https://www.ncbi.nlm.nih.gov/assembly/basics/)
+[NCBI assembly model](https://www.ncbi.nlm.nih.gov/assembly/model/#model)
+[UCSC genome annotation database](http://hgdownload.soe.ucsc.edu/goldenPath/hg38/database/)
+[Ensembl tools video](https://www.youtube.com/watch?v=PavUJIU42Js)
+
+
+All genome assemblies in Ensembl are haploid and for most species there is only a single path through the genome.
+
+Currently, human and mouse are the only genome assemblies where there is more than one path through the genome. They include haplotypes, which are different versions of particular regions of the genome that are found in different individuals. They can include small differences in sequence, or larger differences such as different genes or gene order compared to the primary assembly. Since they are sequences found in real individuals, they are equally valid compared to the primary assembly.
+
+The human genome assembly (GRCh38) and the mouse genome assembly (GRCm38) are maintained by the Genome Reference Consortium (GRC). In addition to the primary assembly, the GRCh38 major assembly release of the human genome included 261 alternate loci including eight haplotypes on the MHC region of chromosome six.
+
+Novel patches: provide alternate alleles. coloured in red in Ensembl browser and will become haplotypes in next major release.
+These are equally valid compared to the primary assembly.
+
+Fix patches: provide improved sequence for known assembly errors. These patches will be incorporated into the primary assembly in the next major assembly release. They are coloured green in the Chromosome summary page and Region in detail page. They are improvements on the primary assembly and should be used preferentially over the primary assembly.
+
+Minor assembly releases have the following naming convention: GRCm38.p3 for the third patch release of GRCm38
+
+
+In order to sequence the genome, DNA is first fragmented into small sections that
+are sequenced. After sequencing, contiguous sections of DNA, `contigs`, are assembled
+which are, in turn, assembled into scaffolds and then into chromosomes. Gaps are left
+where no sequence is available. A primary assembly is a single version of the genome,
+and this procdeure is overseen and maintained for human and mouse by the Genome
+Reference Consortium.
+
+There are some important points to be aware of when using a particular genome build:
+
+- Primary assemblies have gaps and errors
+- Certain genomic regions have know haplotypes that cannot be narrowed down to a single sequence 
+
+Due to this, genome assmblies are constantly being revised and updated by the GRC who release
+information on known alternative sequence and corrections to the primary assembly:
+
+- Haplotypes: are included with the last major release of the primary assembly
+- Genome patch: A contig sequence that is released outside of the full assembly (as a minor release)
+
+In relation to this there are two types of [patches](https://www.ncbi.nlm.nih.gov/grc/help/patches/): 
+
+- Novel patches: provide new alternate loci info to the assembly (coloured in red in Ensembl browser) and will become haplotypes in next major release.
+These are equally valid compared to the primary assembly.
+
+- Fix patches: provide improved sequence for known assembly errors. These patches will be incorporated into the primary assembly in the next major assembly release. They are coloured green in Ensembl. They are improvements on the primary assembly and should be used preferentially over the primary assembly.
+
+
