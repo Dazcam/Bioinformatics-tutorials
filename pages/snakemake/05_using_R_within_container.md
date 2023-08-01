@@ -1,3 +1,9 @@
+---
+layout: page
+title: Using R within a container
+description: Using R within a container
+---
+
 Although there are several ways to run R scripts via snakemake, when trying to run
 R scripts in a shared environment one can often encounter irresovable issues with 
 package dependancies, see [add link](). There are several causes:
@@ -22,8 +28,6 @@ package dependancies, see [add link](). There are several causes:
 The best solution to avoid all this heartache is to use a standalone version of R
 within a container that has all the major CRAN and bioconductor packages pre-installed.
 Details on how to install a container configured for R are [here].
-
-
 
 ```R
 localrules: rm_MHC_from_ref
