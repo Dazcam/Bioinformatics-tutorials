@@ -15,14 +15,13 @@ singularity module.
 
 1. Go to the [Sylabs site](https://cloud.sylabs.io) and create an account. I used my Gitlab
    credentials to sign in.
-3. Create an access token. Navigate to the `access token` tab, add a label for your 
+2. Create a time sensitive access token. Navigate to the `access token` tab, add a label for your 
 access token in the command box (I called mine 'hawk') and copy the access token to 
-your clipboard.
-4. `On HAWK`: load the sigularity module `module load singularity-ce/3.10.2` (don't use default
+your clipboard. This token will be valid for one month.
+3. `On HAWK`: load the sigularity module `module load singularity-ce/3.10.2` (don't use default
    singularity module as it is a symlink for apptainer).
-6. Type `singularity remote login` and paste access token in when prompted and hit enter.
-7. If this is successful you should see `INFO: Access Token Verified!`. This can be checked at any time 
-using `singularity remote status`.
+4. Type `singularity remote login` and paste access token in when prompted and hit enter. 
+5. If this is successful you should see `INFO: Access Token Verified!`. Access status can be checked at any time using `singularity remote status`. When your access token has run out it will say `FATAL:   error response from server: Invalid Credentials`. So you will need to generate a new access token and repeat the steps above.
 
 ***
 
@@ -53,7 +52,7 @@ From: bioconductor/bioconductor_docker:devel
 
 
 %post
-R --no-echo -e 'remotes::install_github("Dazcam/tdespec")'
+    R --no-echo -e 'remotes::install_github("Dazcam/tdespec")'
 ```
 
 Then name your container in the `Repository` box (I called mine 'containers/tdespec') and hit
