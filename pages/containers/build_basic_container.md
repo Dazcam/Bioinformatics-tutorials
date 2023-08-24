@@ -21,21 +21,27 @@ your clipboard. This token will be valid for one month.
 3. `On HAWK`: load the sigularity module `module load singularity-ce/3.10.2` (don't use default
    singularity module as it is a symlink for apptainer).
 4. Type `singularity remote login` and paste access token in when prompted and hit enter. 
-5. If this is successful you should see `INFO: Access Token Verified!`. Access status can be checked at any time using `singularity remote status`. When your access token has run out it will say `FATAL:   error response from server: Invalid Credentials`. So you will need to generate a new access token and repeat the steps above.
+5. If this is successful you should see `INFO: Access Token Verified!`. Access status can be
+checked at any time using `singularity remote status`. When your access token has run out it
+will say `FATAL:   error response from server: Invalid Credentials`. So you will need to
+generate a new access token and repeat the steps above.
 
 ***
 
 ### Create a container
 
-Rather than create an entire container from scratch, it's best to find a pre-existing container that contains
-the OS / packages that you need that you can add to. Here, I needed a container to run R in a conda /
-snakemake environment as I was often encountering dependency clashes when trying to load R packages.
-As `tdespec` uses some bioconductor packages I decided to use the [`bioconductor_docker`](https://github.com/Bioconductor/bioconductor_docker/tree/devel) image which contains all the 
-bioconductor packages and many useful CRAN packages like `dplyr`.
+Rather than create an entire container from scratch, it's best to find a pre-existing container that
+contains the OS / packages that you need that you can add to. Here, I needed a container to run R in
+a conda / snakemake environment as I was often encountering dependency clashes when trying to load R
+packages. As `tdespec` uses some bioconductor packages I decided to use the [`bioconductor_docker`](https://github.com/Bioconductor/bioconductor_docker/tree/devel) image which contains the basic
+R and bioconductor packages. It is then possible to install the additional R libraries you need in 
+the `%post` section of the definition file.
 
 To build the container you need a `definition file`. Navigate to the `remote builder` tab
-in your Sylabs repository and copy the following into the `Definitions file` section.
-(The definitions file can be much more complex than this but this is all we need.) 
+in your Sylabs repository and copy the following into the `Definition file` section.
+(The [definition file](https://docs.sylabs.io/guides/3.7/user-guide/definition_files.html) 
+can be much more complex than this but this is all we need. To build the base container we
+only need the first two lines!) 
 
 
 ```
@@ -47,9 +53,6 @@ From: bioconductor/bioconductor_docker:devel
 
 %help
     This is container to run tdespec 
-
-    BootStrap: docker
-
 
 %post
     R --no-echo -e 'remotes::install_github("Dazcam/tdespec")'
