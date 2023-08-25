@@ -82,4 +82,112 @@ to find and use a compiler on the system to create the program. To use
 the compiler you have to specify a longer set of commands to create a
 program, make automates this.
 
-2hrs 07mins
+In C to print to the screen we use `printf`, the f stands for
+formatted. Strings must be placed in double quotes. We also
+need to use a semi colon to end the line.
+
+Some functions can output a side effect like a visual output,
+or it can be stored using return values that you can use
+and re-use which can be stroed in variable. 
+
+In C `=` is the assignment value for varaibles. It does not
+mean equality line equals in maths. In C you need to specify 
+what `type`, or more fomally what `data type`  the variable is, 
+i.e a string, integer etc. In C this is how the program knows 
+how to assign the 1s and 1s correctly. 
+
+The following line of code tells C to interpret the variable
+answer as a string:
+
+```C
+string answer = get_string("What's your name? "); 
+```
+
+If you mix up the variable data type assignment, i.e. you try to
+pass a `string` as an `int`, the compiler will throw an 
+error. Backslashes are the escape symbol for C. So to take 
+a new line you would type `\n` to escape the `n`, which means
+in this context to take a new line.
+
+```C
+#include <stdio.h>
+
+int main(void)
+{
+
+    string answer = get_string("What's your name? "); 
+    printf("hello, answer\n");
+
+}
+```
+
+When running `make` this error is thrown:
+
+```C
+cc     hello.c   -o hello
+hello.c:6:5: error: use of undeclared identifier 'string'
+    string answer = get_string("What's your name? "); 
+    ^
+1 error generated.
+make: *** [hello] Error 1
+```
+
+To avoid this we need to add an additional line to the top
+of the script to load an additional library (only works in cs50 container):
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+
+    string answer = get_string("What's your name? "); 
+    printf("hello, answer\n");
+
+}
+```
+
+The `stdio.h` load the standard IO library which allows you to
+inlcude input and ouput in your program, this allows you to use
+functions like printf and type text in from a keyboard. `cs50.h`
+makes it easy to accept input from a user and provides some 
+additional functions that don't come with C like `get_string`.
+
+We also need to let C know that answer show be read as a variable 
+rather than a string we do this by using a placeholder, `%s`:
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+
+    string answer = get_string("What's your name? "); 
+    printf("hello, %s\n", answer);
+
+}
+```
+
+This is where the f comes in, it means that printf does the formating
+for you by filling in the placeholder. %s is for strings, %i is for
+integers etc.
+
+Arguments, or paramters, are inputs to a function which have side
+effects like printing to the screen, which you can't reuse, or they
+create `return values` which can be stored in a variable.
+
+arguments > functions > return value
+
+Header files is the mechanism by which you load libraries in C. A library 
+is a menu of functions. These are loaded via the lines of code at the top 
+of the program to tell the compiler what libraries it needs to load to be
+able to interpret the functions in the script. For clarity, the library is
+`stdio` the header file is `stdio.h`. 
+
+Note that in C, no such thing as a tring exists as it does in other program
+languages.
+
+2h 40min
+
