@@ -545,3 +545,97 @@ This tells C that the function will be defined elsewhere in the script. More
 recent programming langages will check the entiore script for function 
 definitions.
 
+To assign variables in a function in C and create a return value we
+can use the following:
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+// Tell C what functions to expect later in script 
+float discount(float price, int percentage);
+
+int main(void)
+{
+    float regular = get_float("Regular Price: ");
+    int percent_off = get_int("Percent Off: ");
+    float sale = discount(regular, percent_off);
+    printf("Sale price: %.2f\n", sale);
+}
+
+float discount(float price, int percentage)
+{
+    return price * (100 - percentage) / 100;
+}
+```
+
+Notice we can send a variable directly to return here. 
+
+**Creating basic computer game**
+
+We can create ASCII art to create a primitive game environment
+map like the original Super Mario brothers, which contains
+particular icons or obstacles.
+
+Notice the use of the `do while` loop. This checks the while 
+condition after the first instance of the loop is run. This 
+constuct is often used to ask a user for a positive value. In
+this case a value > 1. So, in this case, we break out of the 
+loop when the user has cooperated.
+
+A single column of question marks:
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+    do 
+    {
+        n = get_int("Width: ");
+    }
+    while (n < 1)
+
+    for (int i = 0; i < n; i++)
+    {
+        printf("?");
+    }  
+    printf("\n");
+}
+```
+
+A cube barrier:
+
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+    do 
+    {
+        n = get_int("Size: ");
+    }
+    while (n < 1)
+
+    // For each row
+    for (int i = 0; i < n; i++)
+    {
+        // For each column
+        for (int j = 0; j < n; i++)
+        print("#");
+    }  
+
+}
+```
+
+Remember for functions in C you must specify the return type, the
+name for the function and the argumnets for the function in that
+order. If none of these are applicable you write void.
+
+
+
