@@ -1,3 +1,8 @@
+---
+layout: page
+title: Building a container on sylabs in layers
+description: Building a container on sylabs in layers
+---
 
 On occasion it's necessary to build very large container. The build time limit (BTL) with sylabs is 1 hr, 
 so if your container requires packages with lots of dependecies you'll often exceed the BTL. One way
