@@ -45,10 +45,11 @@ From: bioconductor/bioconductor_docker:devel
     R --no-echo -e 'BiocManager::install("glmGamPoi")'
     R --no-echo -e 'install.packages("RPresto")'
     R --no-echo -e 'install.packages("Seurat")'
-    R --no-echo -e 'remotes::install_github("satijalab/seurat-data", "seurat5", quiet = TRUE)'
-    R --no-echo -e 'remotes::install_github("satijalab/azimuth", "seurat5", quiet = TRUE)'
-    R --no-echo -e 'remotes::install_github("satijalab/seurat-wrappers", "seurat5", quiet = TRUE)'
-    R --no-echo -e 'remotes::install_github("stuart-lab/signac", "seurat5", quiet = TRUE)'
+    R --no-echo -e 'setRepositories(ind=1:3)' # Needed to automatically install Bioconductor dependencies for Signac
+    R --no-echo -e 'install.packages(c("R.utils", "Signac"))'
+    R --no-echo -e 'remotes::install_github("satijalab/seurat-wrappers")'
+    R --no-echo -e 'remotes::install_github("satijalab/azimuth")'
+    R --no-echo -e 'BiocManager::install(c("scuttle", "scater"))'
     R --no-echo -e 'install.packages("scCustomize")'
     R --no-echo -e 'install.packages("readxl")'
 
@@ -56,7 +57,8 @@ From: bioconductor/bioconductor_docker:devel
 ```
 </details>
 
-Instead of running the entire thing at once, I built a container up until the `R --no-echo -e 'install.packages("Seurat")'` line:
+Instead of running the entire thing at once, which exceeds the BTL, I built the container 
+up until the `R --no-echo -e 'install.packages("Seurat")'` line first:
 
 <details>
 
@@ -95,3 +97,44 @@ From: bioconductor/bioconductor_docker:devel
     apt clean
 ```
 </details>
+
+This took about 45 minutes to build. I then used that container as the root conatiner and 
+added the remianing packages to it.
+
+<details>
+
+<summary>Layer 2</summary>
+
+```
+Bootstrap: library
+From: library://dazcam/containers/seurat5a:latest
+
+%labels
+    Version v0.0.1
+
+%help
+    This is a container to run Seurat 5 on Hawk
+
+%post
+    # Install R packages
+    R --no-echo -e 'setRepositories(ind=1:3)' # Needed to automatically install Bioconductor dependencies for Signac
+    R --no-echo -e 'install.packages(c("R.utils", "Signac"))'
+    R --no-echo -e 'remotes::install_github("satijalab/seurat-wrappers")'
+    R --no-echo -e 'remotes::install_github("satijalab/azimuth")'
+    R --no-echo -e 'BiocManager::install(c("scuttle", "scater"))'
+    R --no-echo -e 'install.packages("scCustomize")'
+    R --no-echo -e 'install.packages("readxl")'
+```
+</details>
+
+A few other points to mention here. 
+
+First, notice the `apt` commands in layer A. `Apt` is a package
+manager for linux distributions. From time to time, R packages require additional software to be added 
+to the underlying linux kernal. These can be added as needed using `apt update / upgrade / install`.
+
+Second, notice the difference in the headers for layer A and layer B. Layer A uses the bioconductor
+base container as the input container from Docker Hub, whereas layer B uses the Layer A container 
+stored in my personal singularity library.
+
+***
