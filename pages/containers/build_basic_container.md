@@ -96,5 +96,5 @@ singularity exec tdespec_latest.sif R
 
 ***
 
-Move on to [Build a container in layers]({{ site.baseurl }}/pages/containers/02_build_a_container_in_layers.html), or back 
+Move on to [Build a container in layers]({{ site.baseurl }}/pages/containers/02_build_container_layers.html), or back 
 to [index page]({{ site.baseurl }}/index.html).
