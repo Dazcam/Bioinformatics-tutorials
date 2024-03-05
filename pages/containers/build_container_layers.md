@@ -138,3 +138,6 @@ base container as the input container from Docker Hub, whereas layer B uses the 
 stored in my personal singularity library.
 
 ***
+
+Move back to [Build a basic container]({{ site.baseurl }}/pages/containers/01_build_basic_container.html), or back 
+to [index page]({{ site.baseurl }}/index.html).
