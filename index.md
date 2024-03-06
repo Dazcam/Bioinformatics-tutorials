@@ -16,7 +16,7 @@ These tutorials are aimed at the novice / intermediate bioinformatician. This is
 - [Workflow management: Snakemake]({{ site.baseurl }}/pages/snakemake/01_snakemake_intro.html)
 - [Version control: Github]({{ site.baseurl }}/pages/version_control/github_intro.html)
 - [Gene set enrichment: MAGMA]({{ site.baseurl }}/pages/magma/magma_intro.html)
-- [Build a basic container for R]({{ site.baseurl }}/pages/containers/build_basic_container.html)
+- [Build a basic container for R]({{ site.baseurl }}/pages/containers/01_build_basic_container.html)
 
 
 #### Extra Material
