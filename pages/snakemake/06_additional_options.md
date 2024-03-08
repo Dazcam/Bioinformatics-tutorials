@@ -25,7 +25,8 @@ snakemake@params['region']
 
 ***
 
-Move on to [snakemake environment setup]({{ site.baseurl }}/pages/snakemake/02_snakemake_env_setup.html), or back to [Run basic process]({{ site.baseurl }}/index.html).
+Move on to [snakemake environment setup]({{ site.baseurl }}/pages/snakemake/02_snakemake_env_setup.html), 
+or back to [Run basic process]({{ site.baseurl }}/index.html).
 
 ***
 
@@ -52,3 +53,25 @@ local R environment. We can use this to create a log file only if the script is 
 by snakemake. The snakemake variable can be useful in scripts designed to be run 
 on local and remote machines. Note that the square brackets after `snakemake@log` are 
 must be added here.
+
+***
+
+#### Methods for reading in data
+
+When running a snakemake pipeline, you will inevitably need to manage large number of files 
+that often have long complex file names. There are several methods that can be used to read
+files in.
+
+**Using a dictionary**
+
+[source](https://www.biostars.org/p/9588877/#9589491)
+
+```r
+transform = {"new_name1": "sample1", "new_name2": "sample2"}
+
+rule example:
+    input:
+        i = lambda wc: "path/%s.vcf" % transform[wc.newname],
+    output:
+        o = "path/{newname}.vcf",
+```
