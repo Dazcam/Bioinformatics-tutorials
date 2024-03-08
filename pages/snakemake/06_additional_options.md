@@ -26,3 +26,29 @@ snakemake@params['region']
 ***
 
 Move on to [snakemake environment setup]({{ site.baseurl }}/pages/snakemake/02_snakemake_env_setup.html), or back to [Run basic process]({{ site.baseurl }}/index.html).
+
+***
+
+#### Logging within R scripts
+
+When using the `script:` directive to run an R script, it is not permitted to add {log} after
+calling the script. This means you have to find an alternative method redirect `stdout` etc.
+
+A neat method is to write a small function in R to capture information you wish to log:
+
+```r
+source: https://github.com/kelly-sovacool/snakemake-Rscript-log-mwe/blob/master/script.R
+log_smk <- function() {
+  if (exists("snakemake") & length(snakemake@log) != 0) {
+    log <- file(snakemake@log[1][[1]], open = "wt")
+    sink(log, append = TRUE)
+    sink(log, append = TRUE, type = "message")
+  }
+}
+```
+
+Note that when an R script is run by snakmake the variable `snakemake` is available in the 
+local R environment. We can use this to create a log file only if the script is being run 
+by snakemake. The snakemake variable can be useful in scripts designed to be run 
+on local and remote machines. Note that the square brackets after `snakemake@log` are 
+must be added here.
