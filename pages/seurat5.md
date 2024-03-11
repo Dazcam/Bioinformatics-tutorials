@@ -1,3 +1,8 @@
+---
+layout: page
+title: Working with Seurat 5
+description: Working with Seurat 5
+--- 
 
 I've been working with Seurat 5 recently which has introduced new functionality 
 to deal with large datasets. It incorporates functionaility from the `BPCells` package
