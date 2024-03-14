@@ -1,4 +1,8 @@
-
+---
+layout: page
+title: Job troubleshooting in slurm
+description: Job troubleshooting in slurm
+---
 
 #### Assessing resource usage
 
