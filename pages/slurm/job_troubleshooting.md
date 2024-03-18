@@ -72,3 +72,46 @@ sacct -e
 ```
 
 </details>
+
+***
+
+#### Parallelisation with Seurat
+
+In order to parallelise a job on Hawk with Seurat you need to use a package called 
+`future`. If working with snakemake, at the head of your file you need to run the 
+following:
+
+```r
+future('multicore', workers = snakemake@threads)
+options(future.globals.maxSize = 3e+09, future.seed = T)
+plan()
+
+#> multicore:
+#> - args: function (..., future.seed = TRUE, workers = 19, envir = parent.frame())
+#> - tweaked: TRUE
+#> - call: future::plan("multicore", future.seed = T)
+```
+
+This sets up a multi-core job (SMP) (check this) on Hawk. The `future.seed` command is 
+necessary to avoid the following warning:
+
+<details>
+
+<summary>Future seed warning</summary>
+
+```r
+Warning message:
+
+UNRELIABLE VALUE: One of the 'future.apply' iterations ('future_lapply-1') unexpectedly
+generated random numbers without declaring so. There is a risk that those random
+numbers are not statistically sound and the overall results might be invalid. To fix this,
+ specify 'future.seed=TRUE'. This ensures that proper, parallel-safe random numbers are
+produced via the L'Ecuyer-CMRG method. To disable this check, use 'future.seed = NULL',
+or set option 'future.rng.onMisuse' to "ignore".
+```
+</details>
+
+***
+
+
+</details>
